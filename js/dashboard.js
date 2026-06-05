@@ -14,16 +14,54 @@ document.addEventListener("DOMContentLoaded", () => {
   const dashboardUserName = document.getElementById("dashboardUserName");
   const dashboardUserRole = document.getElementById("dashboardUserRole");
 
-  const counts = {
-    bookingsCount: document.getElementById("bookingsCount"),
-    pendingRequestsCount: document.getElementById("pendingRequestsCount"),
-    testsCount: document.getElementById("testsCount"),
-    packagesCount: document.getElementById("packagesCount"),
-    doctorsCount: document.getElementById("doctorsCount"),
-    servicesCount: document.getElementById("servicesCount"),
-    faqsCount: document.getElementById("faqsCount"),
-    contactCardsCount: document.getElementById("contactCardsCount")
-  };
+const counts = {
+
+  bookingsCount:
+    document.getElementById(
+      "bookingsCount"
+    ),
+
+  pendingRequestsCount:
+    document.getElementById(
+      "pendingRequestsCount"
+    ),
+
+  testsCount:
+    document.getElementById(
+      "testsCount"
+    ),
+
+  packagesCount:
+    document.getElementById(
+      "packagesCount"
+    ),
+
+  doctorsCount:
+    document.getElementById(
+      "doctorsCount"
+    ),
+
+  servicesCount:
+    document.getElementById(
+      "servicesCount"
+    ),
+
+  faqsCount:
+    document.getElementById(
+      "faqsCount"
+    ),
+
+  blogsCount:
+    document.getElementById(
+      "blogsCount"
+    ),
+
+  contactCardsCount:
+    document.getElementById(
+      "contactCardsCount"
+    )
+
+};
 
   const bookingSummary = {
     total: document.getElementById("bookingSummaryTotal"),
@@ -157,8 +195,20 @@ document.addEventListener("DOMContentLoaded", () => {
   watchTotalCount("packages", counts.packagesCount);
   watchTotalCount("doctors", counts.doctorsCount);
   watchTotalCount("services", counts.servicesCount);
-  watchTotalCount("faqs", counts.faqsCount);
-  watchTotalCount("contact_cards", counts.contactCardsCount);
+watchTotalCount(
+  "faqs",
+  counts.faqsCount
+);
+
+watchTotalCount(
+  "blogs",
+  counts.blogsCount
+);
+
+watchTotalCount(
+  "contact_cards",
+  counts.contactCardsCount
+);
 
   onAuthStateChanged(auth, async (user) => {
     if (!user) {

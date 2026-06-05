@@ -359,3 +359,17 @@
   }
 
 }
+
+@media(max-width:768px){
+
+  .blog-hero-image{
+
+    height:260px;
+  }
+
+  .blog-title{
+
+    font-size:2rem;
+  }
+
+}
