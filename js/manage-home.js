@@ -184,6 +184,40 @@ const DEFAULT_NEWS = [
   }
 ];
 
+const DEFAULT_ADS = [
+
+  {
+    imageUrl:
+      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200",
+
+    targetUrl:
+      "https://cwflabs.org",
+
+    title:
+      "Free Health Camp",
+
+    displayOrder: 1,
+
+    active: true
+  },
+
+  {
+    imageUrl:
+      "https://images.unsplash.com/photo-1584515933487-779824d29309?w=1200",
+
+    targetUrl:
+      "https://cwflabs.org",
+
+    title:
+      "Healthcare Awareness",
+
+    displayOrder: 2,
+
+    active: true
+  }
+
+];
+
 document.addEventListener("DOMContentLoaded", async () => {
   const heroForm = document.getElementById("heroForm");
   const heroTagline = document.getElementById("heroTagline");
@@ -208,6 +242,64 @@ document.addEventListener("DOMContentLoaded", async () => {
   const featuresGrid = document.getElementById("featuresGrid");
   const linksGrid = document.getElementById("linksGrid");
   const newsGrid = document.getElementById("newsGrid");
+  const adsGrid =
+  document.getElementById("adsGrid");
+
+const openAddAdModal =
+  document.getElementById("openAddAdModal");
+
+const adModal =
+  new bootstrap.Modal(
+    document.getElementById("adModal")
+  );
+
+const adForm =
+  document.getElementById("adForm");
+
+const adModalLabel =
+  document.getElementById("adModalLabel");
+
+const adDocId =
+  document.getElementById("adDocId");
+
+const adTitle =
+  document.getElementById("adTitle");
+
+const adImageUrl =
+  document.getElementById("adImageUrl");
+
+const adTargetUrl =
+  document.getElementById("adTargetUrl");
+
+const adDisplayOrder =
+  document.getElementById("adDisplayOrder");
+
+const adStatus =
+  document.getElementById("adStatus");
+
+const adPreview =
+  document.getElementById("adPreview");
+
+  adImageUrl?.addEventListener(
+  "input",
+  () => {
+
+    if (!adImageUrl.value.trim()) {
+
+      adPreview.style.display = "none";
+      return;
+
+    }
+
+    adPreview.src =
+      adImageUrl.value.trim();
+
+    adPreview.style.display =
+      "block";
+
+  }
+);
+
   const whyChooseGrid =
   document.getElementById("whyChooseGrid");
 
@@ -280,6 +372,7 @@ let allFeatures = [];
 let allWhyChooseCards = [];
 let allLinks = [];
 let allNews = [];
+let allAds = [];
   
 
   function normalize(value = "") {
@@ -425,6 +518,73 @@ let allNews = [];
     .join("");
 
   bindWhyChooseButtons();
+}
+
+function renderAds(items){
+
+  adsGrid.innerHTML = items
+    .sort(
+      (a,b)=>
+      a.displayOrder-b.displayOrder
+    )
+    .map(
+      (item)=>`
+
+      <div class="col-md-6 col-xl-4">
+
+        <div class="card border-0 shadow-sm h-100">
+
+          <img
+            src="${item.imageUrl}"
+            class="package-card-image">
+
+          <div class="card-body">
+
+            <h5 class="fw-bold">
+              ${item.title}
+            </h5>
+
+            <p class="small text-muted mb-3">
+              Order:
+              ${item.displayOrder}
+            </p>
+
+            <div class="mb-3">
+
+              <span
+                class="badge ${
+                  item.active
+                  ? "bg-success"
+                  : "bg-warning text-dark"
+                }">
+
+                ${
+                  item.active
+                  ? "Active"
+                  : "Inactive"
+                }
+
+              </span>
+
+            </div>
+
+            ${cardButtons(
+              item.id,
+              "js-edit-ad",
+              "js-delete-ad"
+            )}
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `
+    )
+    .join("");
+
+  bindAdButtons();
 }
 
   function renderLinkCards(items) {
@@ -598,6 +758,88 @@ let allNews = [];
 
 }
 
+function bindAdButtons(){
+
+  document
+    .querySelectorAll(".js-edit-ad")
+    .forEach((btn)=>{
+
+      btn.addEventListener(
+        "click",
+        ()=>{
+
+          const item =
+            allAds.find(
+              ad =>
+              ad.id === btn.dataset.id
+            );
+
+          if(!item) return;
+
+          adModalLabel.textContent =
+            "Edit Advertisement";
+
+          adDocId.value =
+            item.id;
+
+          adTitle.value =
+            item.title;
+
+          adImageUrl.value =
+            item.imageUrl;
+
+          adTargetUrl.value =
+            item.targetUrl || "";
+
+          adDisplayOrder.value =
+            item.displayOrder;
+
+          adStatus.value =
+            item.active
+            ? "true"
+            : "false";
+
+          adPreview.src =
+            item.imageUrl;
+
+          adPreview.style.display =
+            "block";
+
+          adModal.show();
+
+        }
+      );
+
+    });
+
+  document
+    .querySelectorAll(".js-delete-ad")
+    .forEach((btn)=>{
+
+      btn.addEventListener(
+        "click",
+        async()=>{
+
+          if(
+            !confirm(
+              "Delete Advertisement?"
+            )
+          ) return;
+
+          await deleteDoc(
+            doc(
+              db,
+              "homepage_ads",
+              btn.dataset.id
+            )
+          );
+
+        }
+      );
+
+    });
+}
+
   function bindLinkButtons() {
     document.querySelectorAll(".js-edit-link").forEach((button) => {
       button.addEventListener("click", () => {
@@ -708,6 +950,37 @@ if (whyChooseSnapshot.empty) {
       DEFAULT_NEWS.filter((item) => !newsIds.has(item.id))
         .map((item) => setDoc(doc(db, "news", item.id), item))
     );
+
+    const adsSnapshot =
+  await getDocs(
+    collection(
+      db,
+      "homepage_ads"
+    )
+  );
+
+if (adsSnapshot.empty) {
+
+  await Promise.all(
+
+    DEFAULT_ADS.map(
+      (item) =>
+        addDoc(
+          collection(
+            db,
+            "homepage_ads"
+          ),
+          {
+            ...item,
+            createdAt:
+              serverTimestamp()
+          }
+        )
+    )
+
+  );
+
+}
   }
 
   function watchHero() {
@@ -758,6 +1031,37 @@ if (whyChooseSnapshot.empty) {
       renderWhyChooseCards(
         allWhyChooseCards
       );
+
+    }
+  );
+}
+
+function watchAds(){
+
+  const q = query(
+    collection(
+      db,
+      "homepage_ads"
+    ),
+    orderBy(
+      "displayOrder",
+      "asc"
+    )
+  );
+
+  onSnapshot(
+    q,
+    (snapshot)=>{
+
+      allAds =
+        snapshot.docs.map(
+          d => ({
+            id:d.id,
+            ...d.data()
+          })
+        );
+
+      renderAds(allAds);
 
     }
   );
@@ -835,6 +1139,34 @@ if (whyChooseSnapshot.empty) {
     );
 
 }
+if(openAddAdModal){
+
+  openAddAdModal
+    .addEventListener(
+      "click",
+      ()=>{
+
+        adForm.reset();
+
+        adDocId.value = "";
+
+        adDisplayOrder.value = "1";
+
+        adStatus.value = "true";
+
+        adPreview.style.display =
+          "none";
+
+        adModalLabel.textContent =
+          "Add Advertisement";
+
+        adModal.show();
+
+      }
+    );
+
+}
+
   if (openAddLinkModal) openAddLinkModal.addEventListener("click", openNewLinkModal);
   if (openAddNewsModal) openAddNewsModal.addEventListener("click", openNewNewsModal);
 
@@ -966,6 +1298,72 @@ if (whyChooseSnapshot.empty) {
 
 }
 
+if(adForm){
+
+  adForm.addEventListener(
+    "submit",
+    async(e)=>{
+
+      e.preventDefault();
+
+      const payload = {
+
+        title:
+          adTitle.value.trim(),
+
+        imageUrl:
+          adImageUrl.value.trim(),
+
+        targetUrl:
+          adTargetUrl.value.trim(),
+
+        displayOrder:
+          Number(
+            adDisplayOrder.value
+          ),
+
+        active:
+          adStatus.value === "true",
+
+        updatedAt:
+          serverTimestamp()
+
+      };
+
+      if(adDocId.value){
+
+        await updateDoc(
+          doc(
+            db,
+            "homepage_ads",
+            adDocId.value
+          ),
+          payload
+        );
+
+      }
+      else{
+
+        payload.createdAt =
+          serverTimestamp();
+
+        await addDoc(
+          collection(
+            db,
+            "homepage_ads"
+          ),
+          payload
+        );
+
+      }
+
+      adModal.hide();
+
+    }
+  );
+
+}
+
   if (linkForm) {
     linkForm.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -1020,6 +1418,7 @@ watchHero();
 watchContact();
 watchFeatures();
 watchWhyChoose();
+watchAds();
 watchLinks();
 watchNews();
 });
