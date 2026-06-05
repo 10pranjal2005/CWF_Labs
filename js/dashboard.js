@@ -13,6 +13,45 @@ import {
 document.addEventListener("DOMContentLoaded", () => {
   const dashboardUserName = document.getElementById("dashboardUserName");
   const dashboardUserRole = document.getElementById("dashboardUserRole");
+  const summaryElements = {
+
+  tests:
+    document.getElementById("summaryTests"),
+
+  testsBar:
+    document.getElementById("summaryTestsBar"),
+
+  packages:
+    document.getElementById("summaryPackages"),
+
+  packagesBar:
+    document.getElementById("summaryPackagesBar"),
+
+  doctors:
+    document.getElementById("summaryDoctors"),
+
+  doctorsBar:
+    document.getElementById("summaryDoctorsBar"),
+
+  services:
+    document.getElementById("summaryServices"),
+
+  servicesBar:
+    document.getElementById("summaryServicesBar"),
+
+  blogs:
+    document.getElementById("summaryBlogs"),
+
+  blogsBar:
+    document.getElementById("summaryBlogsBar"),
+
+  faqs:
+    document.getElementById("summaryFaqs"),
+
+  faqsBar:
+    document.getElementById("summaryFaqsBar")
+
+};
 
 const counts = {
 
@@ -70,12 +109,73 @@ const counts = {
     completed: document.getElementById("bookingSummaryCompleted"),
     cancelled: document.getElementById("bookingSummaryCancelled")
   };
+  const summaryTestsCount =
+document.getElementById("summaryTestsCount");
+
+const summaryPackagesCount =
+document.getElementById("summaryPackagesCount");
+
+const summaryDoctorsCount =
+document.getElementById("summaryDoctorsCount");
+
+const summaryServicesCount =
+document.getElementById("summaryServicesCount");
+
+const summaryBlogsCount =
+document.getElementById("summaryBlogsCount");
+
+const summaryFaqsCount =
+document.getElementById("summaryFaqsCount");
+
+
+const summaryTestsBar =
+document.getElementById("summaryTestsBar");
+
+const summaryPackagesBar =
+document.getElementById("summaryPackagesBar");
+
+const summaryDoctorsBar =
+document.getElementById("summaryDoctorsBar");
+
+const summaryServicesBar =
+document.getElementById("summaryServicesBar");
+
+const summaryBlogsBar =
+document.getElementById("summaryBlogsBar");
+
+const summaryFaqsBar =
+document.getElementById("summaryFaqsBar");
 
   function setCount(element, value) {
     if (element) {
       element.textContent = String(value);
     }
   }
+
+  function updateSummaryBar(
+  valueElement,
+  barElement,
+  value
+) {
+
+  if (valueElement) {
+    valueElement.textContent = value;
+  }
+
+  if (barElement) {
+
+    const width =
+      Math.min(
+        value * 5,
+        100
+      );
+
+    barElement.style.width =
+      `${width}%`;
+
+  }
+
+}
 
   function formatRole(role) {
     if (!role) return "Admin";
@@ -99,6 +199,50 @@ const counts = {
       setCount(element, 0);
     }
   }
+
+function watchSummaryCount(
+  collectionName,
+  countElement,
+  barElement
+) {
+
+  onSnapshot(
+
+    collection(
+      db,
+      collectionName
+    ),
+
+    (snapshot) => {
+
+      const total =
+        snapshot.size;
+
+      if (countElement) {
+
+        countElement.textContent =
+          total;
+
+      }
+
+      if (barElement) {
+
+        const width =
+          Math.min(
+            total * 5,
+            100
+          );
+
+        barElement.style.width =
+          `${width}%`;
+
+      }
+
+    }
+
+  );
+
+}
 
   function watchPendingRequests() {
     try {
@@ -198,6 +342,42 @@ const counts = {
 watchTotalCount(
   "faqs",
   counts.faqsCount
+);
+
+watchSummaryCount(
+  "tests",
+  summaryTestsCount,
+  summaryTestsBar
+);
+
+watchSummaryCount(
+  "packages",
+  summaryPackagesCount,
+  summaryPackagesBar
+);
+
+watchSummaryCount(
+  "doctors",
+  summaryDoctorsCount,
+  summaryDoctorsBar
+);
+
+watchSummaryCount(
+  "services",
+  summaryServicesCount,
+  summaryServicesBar
+);
+
+watchSummaryCount(
+  "blogs",
+  summaryBlogsCount,
+  summaryBlogsBar
+);
+
+watchSummaryCount(
+  "faqs",
+  summaryFaqsCount,
+  summaryFaqsBar
 );
 
 watchTotalCount(

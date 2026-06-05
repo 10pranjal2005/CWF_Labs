@@ -611,3 +611,31 @@ a:hover {
   }
 
 }
+
+/* =====================================
+   DASHBOARD HEALTH SUMMARY
+===================================== */
+
+.summary-item {
+
+  padding: 12px 0;
+
+}
+
+.summary-item .progress {
+
+  height: 12px;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  background: #edf2f7;
+
+}
+
+.summary-item .progress-bar {
+
+  transition: width .6s ease;
+
+}
