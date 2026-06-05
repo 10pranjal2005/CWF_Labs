@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (value.includes("blood")) return "bg-primary";
     if (value.includes("diabetes")) return "bg-danger";
     if (value.includes("heart")) return "bg-warning text-dark";
+    if (value.includes("Liver")) return "bg-warning text-dark";
     if (value.includes("vitamin")) return "bg-success";
     if (value.includes("thyroid")) return "bg-info text-dark";
     if (value.includes("full body")) return "bg-secondary";
