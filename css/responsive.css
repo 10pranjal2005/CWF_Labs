@@ -1,0 +1,325 @@
+/* ===================================== */
+/* LARGE TABLETS & SMALL LAPTOPS */
+/* ===================================== */
+
+@media (max-width: 992px) {
+
+  /* HERO SECTION */
+
+  .hero-section {
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* NAVBAR */
+
+  .navbar-nav {
+    padding-top: 20px;
+    gap: 10px;
+  }
+
+  .nav-link {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  /* BUTTONS */
+
+  .btn-lg {
+    width: 100%;
+  }
+
+  /* QUICK LINKS */
+
+  .quick-link-card {
+    justify-content: center;
+  }
+}
+
+/* ===================================== */
+/* TABLETS */
+/* ===================================== */
+
+@media (max-width: 768px) {
+
+  /* HERO SECTION */
+
+  .hero-section {
+    min-height: auto;
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+
+  .hero-title {
+    font-size: 1.9rem;
+    line-height: 1.3;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  /* SECTION TITLES */
+
+  .section-title {
+    font-size: 1.7rem;
+  }
+
+  .section-description {
+    font-size: 0.95rem;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /* CARDS */
+
+  .feature-card,
+  .news-card {
+    border-radius: 16px;
+  }
+
+  .card-body {
+    padding: 24px 20px;
+  }
+
+  /* FEATURE ICON */
+
+  .feature-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .feature-icon i {
+    font-size: 1.8rem;
+  }
+
+  /* FOOTER */
+
+  footer {
+    text-align: center;
+  }
+}
+
+/* ===================================== */
+/* MOBILE PHONES */
+/* ===================================== */
+
+@media (max-width: 576px) {
+
+  /* BODY */
+
+  body {
+    font-size: 15px;
+  }
+
+  /* NAVBAR */
+
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .navbar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  /* HERO SECTION */
+
+  .hero-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .hero-tagline {
+    font-size: 0.8rem;
+  }
+
+  .hero-title {
+    font-size: 1.7rem;
+    margin-bottom: 16px;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+  }
+
+  /* BUTTONS */
+
+  .btn {
+    font-size: 0.95rem;
+    padding: 12px 18px;
+  }
+
+  .btn-lg {
+    width: 100%;
+  }
+
+  /* SECTION SPACING */
+
+  section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* TITLES */
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  /* CARDS */
+
+  .feature-card,
+  .news-card,
+  .quick-link-card {
+    border-radius: 14px;
+  }
+
+  /* QUICK LINKS */
+
+  .quick-link-card {
+    padding: 16px;
+    font-size: 0.95rem;
+  }
+
+  .quick-link-card i {
+    font-size: 1.1rem;
+  }
+
+  /* CONTACT SECTION */
+
+  .list-unstyled li {
+    font-size: 0.95rem;
+  }
+
+  /* FOOTER */
+
+  footer h5 {
+    font-size: 1.1rem;
+  }
+
+  footer p {
+    font-size: 0.9rem;
+  }
+
+  /* DOCTOR PAGE MOBILE */
+
+  .feature-icon.flex-shrink-0 {
+    width: 55px;
+    height: 55px;
+  }
+
+  .feature-icon.flex-shrink-0 i {
+    font-size: 1.2rem;
+  }
+
+  .card h4 {
+    font-size: 1.05rem;
+  }
+
+  /* ABOUT PAGE MOBILE */
+
+  .about-panel img {
+    height: 220px;
+  }
+
+  .about-chip {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ===================================== */
+/* VERY SMALL DEVICES */
+/* ===================================== */
+
+@media (max-width: 400px) {
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+  }
+
+  .feature-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .feature-icon i {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+
+  .navbar-logo {
+    height: 52px;
+  }
+
+}
+
+@media (max-width: 576px) {
+  .cwf-update-track {
+    font-size: 0.85rem;
+    gap: 1.5rem;
+    padding: 0.55rem 0;
+  }
+}
+
+/* ===================================== */
+/* FEEDBACK RESPONSIVE */
+/* ===================================== */
+
+@media(max-width:992px){
+
+  .testimonial-grid{
+
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:768px){
+
+  .testimonial-container{
+
+    flex-direction:column;
+  }
+
+  .testimonial-grid{
+
+    width:100%;
+
+    grid-template-columns:1fr;
+  }
+
+  .testimonial-arrow{
+
+    width:50px;
+    height:50px;
+  }
+
+}

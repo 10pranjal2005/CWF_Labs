@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Contact Cards | CWF Labs</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="bg-light">
+
+  <!-- ADMIN TOP BAR -->
+  <header class="sticky-top">
+    <nav class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container">
+        <a
+  class="navbar-brand fw-bold d-flex align-items-center gap-2"
+  href="../index.html">
+
+  <img
+    src="../assets/logos/CWF_Labs.png"
+    alt="CWF Labs Logo"
+    class="admin-navbar-logo">
+
+  <span>CWF Labs Admin Portal</span>
+
+</a>
+        <div class="d-flex align-items-center gap-2">
+          <a href="dashboard.html" class="btn btn-outline-light btn-sm">
+            <i class="bi bi-speedometer2 me-1"></i>
+            Dashboard
+          </a>
+
+          <a href="manage-services.html" class="btn btn-outline-light btn-sm">
+            <i class="bi bi-grid-1x2 me-1"></i>
+            Services
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="py-4 py-md-5">
+    <div class="container">
+
+      <!-- PAGE HEADER -->
+      <div class="row align-items-center mb-4 g-3">
+        <div class="col-12 col-lg-8">
+          <h1 class="fw-bold mb-2">Manage Contact Cards</h1>
+          <p class="text-muted mb-0">
+            Edit the public Contact Us cards, update phone numbers, links, locations, and add new cards when needed.
+          </p>
+        </div>
+
+        <div class="col-12 col-lg-4">
+          <div class="d-grid">
+            <button type="button" class="btn btn-primary btn-lg" id="openAddContactModal">
+              <i class="bi bi-plus-circle me-2"></i>
+              Add New Contact Card
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STATS CARDS -->
+      <div class="row g-3 mb-4">
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <p class="text-muted mb-1">Total Cards</p>
+              <h3 class="fw-bold mb-0" id="totalCardsCount">0</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <p class="text-muted mb-1">Active</p>
+              <h3 class="fw-bold mb-0 text-success" id="activeCardsCount">0</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <p class="text-muted mb-1">Built-in Cards</p>
+              <h3 class="fw-bold mb-0 text-primary" id="builtinCardsCount">0</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <p class="text-muted mb-1">Custom Cards</p>
+              <h3 class="fw-bold mb-0 text-warning" id="customCardsCount">0</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEARCH / FILTER -->
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body p-3 p-md-4">
+          <div class="row g-3 align-items-end">
+            <div class="col-12 col-md-5">
+              <label for="searchContactCards" class="form-label fw-semibold">Search Cards</label>
+              <input
+                type="search"
+                class="form-control"
+                id="searchContactCards"
+                placeholder="Search by title, slot, or description">
+            </div>
+
+            <div class="col-12 col-md-3">
+              <label for="filterContactSlot" class="form-label fw-semibold">Card Type</label>
+              <select class="form-select" id="filterContactSlot">
+                <option value="all" selected>All Cards</option>
+                <option value="customer_support">Customer Support</option>
+                <option value="request_consultation">Request Consultation</option>
+                <option value="lab_location">Lab Location</option>
+                <option value="sample_center_1">Sample Center 1</option>
+                <option value="sample_center_2">Sample Center 2</option>
+                <option value="email_phone">Email and Phone</option>
+                <option value="custom">Custom</option>
+              </select>
+            </div>
+
+            <div class="col-12 col-md-2">
+              <label for="filterContactStatus" class="form-label fw-semibold">Status</label>
+              <select class="form-select" id="filterContactStatus">
+                <option value="all" selected>All</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+
+            <div class="col-12 col-md-2">
+              <div class="d-grid">
+                <button type="button" class="btn btn-outline-primary" id="clearFiltersBtn">
+                  <i class="bi bi-funnel me-1"></i>
+                  Clear
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOADING / EMPTY STATE -->
+      <div class="card border-0 shadow-sm mb-4 d-none" id="loadingCard">
+        <div class="card-body p-4 text-center">
+          <div class="spinner-border text-primary mb-3" role="status" aria-label="Loading"></div>
+          <p class="mb-0">Loading contact cards from Firestore...</p>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm mb-4 d-none" id="emptyStateCard">
+        <div class="card-body p-4 text-center">
+          <i class="bi bi-inbox fs-1 text-muted mb-3 d-block"></i>
+          <h4 class="fw-bold mb-2">No contact cards found</h4>
+          <p class="text-muted mb-0">
+            Add your first contact card to start showing it on the public website.
+          </p>
+        </div>
+      </div>
+
+      <!-- DESKTOP TABLE -->
+      <div class="card border-0 shadow-sm d-none d-lg-block">
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th class="px-4 py-3">Card Title</th>
+                  <th class="px-4 py-3">Card Type</th>
+                  <th class="px-4 py-3">Status</th>
+                  <th class="px-4 py-3">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="contactTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOBILE CARDS -->
+      <div class="d-lg-none row g-4" id="contactMobileGrid"></div>
+
+
+
+    </div>
+  </main>
+
+  <!-- ADD / EDIT CONTACT MODAL -->
+  <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="contactModalLabel">Add New Contact Card</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="contactForm" class="row g-3">
+            <input type="hidden" id="contactDocId">
+
+            <div class="col-12 col-md-6">
+              <label for="contactSlot" class="form-label fw-semibold">Card Type</label>
+              <select class="form-select" id="contactSlot" required>
+                <option value="" selected disabled>Select card type</option>
+                <option value="customer_support">Customer Support</option>
+                <option value="request_consultation">Request a Consultation</option>
+                <option value="lab_location">Lab Location</option>
+                <option value="sample_center_1">Sample Collection Center 1</option>
+                <option value="sample_center_2">Sample Collection Center 2</option>
+                <option value="email_phone">Email and Phone</option>
+                <option value="custom">Custom Card</option>
+              </select>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="contactTitle" class="form-label fw-semibold">Card Title</label>
+              <input
+                type="text"
+                class="form-control"
+                id="contactTitle"
+                placeholder="Enter card title"
+                required>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="contactIcon" class="form-label fw-semibold">Card Icon</label>
+              <select class="form-select" id="contactIcon" required>
+                <option value="" selected disabled>Select icon</option>
+                <option value="bi-headset">Customer Support</option>
+                <option value="bi-calendar-check">Request Consultation</option>
+                <option value="bi-geo-alt">Location</option>
+                <option value="bi-house-heart">Sample Center 1</option>
+                <option value="bi-building">Sample Center 2</option>
+                <option value="bi-envelope">Email and Phone</option>
+                <option value="bi-whatsapp">WhatsApp</option>
+                <option value="bi-telephone-fill">Call</option>
+                <option value="bi-map">Map</option>
+                <option value="bi-megaphone">Announcement</option>
+                <option value="bi-file-earmark-medical">Medical Info</option>
+                <option value="bi-heart-pulse">Health Support</option>
+                <option value="bi-person-badge">Custom</option>
+              </select>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="contactDisplayOrder" class="form-label fw-semibold">Display Order</label>
+              <input
+                type="number"
+                class="form-control"
+                id="contactDisplayOrder"
+                placeholder="Enter display order"
+                min="1"
+                required>
+            </div>
+
+            <div class="col-12">
+              <label for="contactDescription" class="form-label fw-semibold">Description</label>
+              <textarea
+                class="form-control"
+                id="contactDescription"
+                rows="4"
+                placeholder="Enter card description"
+                required></textarea>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="contactBadgeText" class="form-label fw-semibold">Badge Text</label>
+              <input
+                type="text"
+                class="form-control"
+                id="contactBadgeText"
+                placeholder="Example: Center 1">
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="contactBadgeClass" class="form-label fw-semibold">Badge Style</label>
+              <select class="form-select" id="contactBadgeClass">
+                <option value="" selected>No Badge</option>
+                <option value="bg-primary">Primary</option>
+                <option value="bg-success">Success</option>
+                <option value="bg-warning text-dark">Warning</option>
+                <option value="bg-danger">Danger</option>
+                <option value="bg-info text-dark">Info</option>
+                <option value="bg-secondary">Secondary</option>
+              </select>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="contactWhatsapp" class="form-label fw-semibold">WhatsApp Number</label>
+              <input
+                type="text"
+                class="form-control"
+                id="contactWhatsapp"
+                placeholder="Example: 918961772773">
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="contactPhone" class="form-label fw-semibold">Phone Number</label>
+              <input
+                type="text"
+                class="form-control"
+                id="contactPhone"
+                placeholder="Example: +918961772773">
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="contactEmail" class="form-label fw-semibold">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="contactEmail"
+                placeholder="Example: email@cwflabs.org">
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="contactAddress" class="form-label fw-semibold">Address</label>
+              <input
+                type="text"
+                class="form-control"
+                id="contactAddress"
+                placeholder="Enter location or address">
+            </div>
+
+            <div class="col-12">
+              <label for="contactMapUrl" class="form-label fw-semibold">Map URL</label>
+              <input
+                type="url"
+                class="form-control"
+                id="contactMapUrl"
+                placeholder="Paste Google Maps link here">
+            </div>
+
+            <div class="col-12">
+              <label for="contactDetails" class="form-label fw-semibold">Details</label>
+              <textarea
+                class="form-control"
+                id="contactDetails"
+                rows="3"
+                placeholder="Enter additional details"></textarea>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="primaryActionLabel" class="form-label fw-semibold">Primary Button Label</label>
+              <input
+                type="text"
+                class="form-control"
+                id="primaryActionLabel"
+                placeholder="Example: Message on WhatsApp">
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="primaryActionUrl" class="form-label fw-semibold">Primary Button URL</label>
+              <input
+                type="text"
+                class="form-control"
+                id="primaryActionUrl"
+                placeholder="Example: https://wa.me/...">
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="secondaryActionLabel" class="form-label fw-semibold">Secondary Button Label</label>
+              <input
+                type="text"
+                class="form-control"
+                id="secondaryActionLabel"
+                placeholder="Example: Call Support">
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="secondaryActionUrl" class="form-label fw-semibold">Secondary Button URL</label>
+              <input
+                type="text"
+                class="form-control"
+                id="secondaryActionUrl"
+                placeholder="Example: tel:+918961772773">
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="contactStatus" class="form-label fw-semibold">Status</label>
+              <select class="form-select" id="contactStatus" required>
+                <option value="true" selected>Active</option>
+                <option value="false">Inactive</option>
+              </select>
+            </div>
+
+            <div class="col-12 d-flex justify-content-end gap-2">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-primary" id="saveContactBtn">
+                Save Contact Card
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Firebase CRUD Script -->
+  <script type="module" src="../js/manage-contact.js"></script>
+<!-- ADMIN FOOTER -->
+<footer class="admin-footer mt-5">
+  <div class="container">
+
+    <div class="row g-4 align-items-center">
+
+      <div class="col-12 col-lg-4 text-center text-lg-start">
+
+        <div class="d-flex align-items-center justify-content-center justify-content-lg-start gap-2 mb-2">
+
+          <img
+            src="../assets/logos/CWF_Labs.png"
+            alt="CWF Labs Logo"
+            class="admin-footer-logo">
+
+          <h5 class="fw-bold mb-0">
+            CWF Labs Admin Portal
+          </h5>
+
+        </div>
+
+        <p class="mb-0 text-muted small">
+          Secure content management system for healthcare operations,
+          services, consultations, packages, bookings, and public website updates.
+        </p>
+
+      </div>
+
+      <div class="col-12 col-lg-4 text-center">
+
+        <div class="admin-footer-links">
+
+          <a href="dashboard.html">
+            Dashboard
+          </a>
+
+          <a href="manage-home.html">
+            Home
+          </a>
+
+          <a href="manage-tests.html">
+            Tests
+          </a>
+
+          <a href="manage-packages.html">
+            Packages
+          </a>
+
+          <a href="manage-doctors.html">
+            Doctors
+          </a>
+
+          <a href="manage-services.html">
+            Services
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="col-12 col-lg-4 text-center text-lg-end">
+
+        <div class="mb-2">
+
+          <span class="badge bg-success me-2">
+            Live Firestore
+          </span>
+
+          <span class="badge bg-primary">
+            Admin Access
+          </span>
+
+        </div>
+
+        <p class="mb-0 text-muted small">
+          © <span id="adminFooterYear"></span>
+          CWF Labs Admin Portal
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</footer>
+<script>
+document.getElementById("adminFooterYear").textContent =
+new Date().getFullYear();
+</script>
+</body>
+</html>

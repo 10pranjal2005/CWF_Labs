@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage About | CWF Labs</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="bg-light">
+
+  <!-- ADMIN TOP BAR -->
+  <header class="sticky-top">
+    <nav class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container">
+        <a
+  class="navbar-brand fw-bold d-flex align-items-center gap-2"
+  href="../index.html">
+
+  <img
+    src="../assets/logos/CWF_Labs.png"
+    alt="CWF Labs Logo"
+    class="admin-navbar-logo">
+
+  <span>CWF Labs Admin Portal</span>
+
+</a>
+
+        <div class="d-flex align-items-center gap-2">
+          <a href="dashboard.html" class="btn btn-outline-light btn-sm">
+            <i class="bi bi-speedometer2 me-1"></i>
+            Dashboard
+          </a>
+
+          <a href="manage-contact.html" class="btn btn-outline-light btn-sm">
+            <i class="bi bi-envelope-paper me-1"></i>
+            Contact
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="py-4 py-md-5">
+    <div class="container">
+
+      <!-- INTRO -->
+      <div class="row align-items-center mb-4 g-3">
+        <div class="col-12 col-lg-8">
+          <h1 class="fw-bold mb-2">Manage About Page</h1>
+          <p class="text-muted mb-0">
+            Edit the About page hero, mission, focus areas, services, and people involved.
+          </p>
+        </div>
+
+        <div class="col-12 col-lg-4">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+              <div class="d-flex align-items-center justify-content-between">
+                <div>
+                  <p class="text-muted mb-1">Hero Content</p>
+                  <h3 class="fw-bold mb-0" id="heroStatusText">Live</h3>
+                </div>
+                <div class="feature-icon flex-shrink-0">
+                  <i class="bi bi-info-circle"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <div class="row g-3 mb-4">
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <p class="text-muted mb-1"> Who We Are</p>
+              <h3 class="fw-bold mb-0 text-primary" id="focusAreasCount">0</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <p class="text-muted mb-1">What We Do</p>
+              <h3 class="fw-bold mb-0 text-success" id="servicesCount">0</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <p class="text-muted mb-1">Team Members</p>
+              <h3 class="fw-bold mb-0 text-warning" id="teamCount">0</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <p class="text-muted mb-1">Live Sections</p>
+              <h3 class="fw-bold mb-0 text-danger">4</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABS -->
+      <ul class="nav nav-pills nav-fill mb-4" id="aboutTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="overview-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#overview-pane"
+            type="button"
+            role="tab"
+            aria-controls="overview-pane"
+            aria-selected="true">
+            Overview
+          </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="focus-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#focus-pane"
+            type="button"
+            role="tab"
+            aria-controls="focus-pane"
+            aria-selected="false">
+            Who We Are
+          </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="services-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#services-pane"
+            type="button"
+            role="tab"
+            aria-controls="services-pane"
+            aria-selected="false">
+            What We Do
+          </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="team-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#team-pane"
+            type="button"
+            role="tab"
+            aria-controls="team-pane"
+            aria-selected="false">
+            People Involved
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="aboutTabsContent">
+
+        <!-- OVERVIEW -->
+        <div
+          class="tab-pane fade show active"
+          id="overview-pane"
+          role="tabpanel"
+          aria-labelledby="overview-tab"
+          tabindex="0">
+          <div class="row g-4">
+            <div class="col-12 col-lg-6">
+              <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white border-0 pt-4 px-4">
+                  <h4 class="fw-bold mb-1">Hero Content</h4>
+                  <p class="text-muted mb-0 small">Edit the main About page header area.</p>
+                </div>
+                <div class="card-body p-4">
+                  <form id="heroForm" class="row g-3">
+                    <div class="col-12">
+                      <label for="heroTaglineInput" class="form-label fw-semibold">Tagline</label>
+                      <input type="text" class="form-control" id="heroTaglineInput" required>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="heroTitleInput" class="form-label fw-semibold">Title</label>
+                      <input type="text" class="form-control" id="heroTitleInput" required>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="heroDescriptionInput" class="form-label fw-semibold">Description</label>
+                      <textarea class="form-control" id="heroDescriptionInput" rows="4" required></textarea>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="heroImageInput" class="form-label fw-semibold">Hero Image URL</label>
+                      <input
+                        type="url"
+                        class="form-control"
+                        id="heroImageInput"
+                        placeholder="Paste a hero image URL here">
+                      <div class="form-text">
+                        Use a public image URL for the hero image.
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save me-2"></i>
+                        Save Hero Content
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white border-0 pt-4 px-4">
+                  <h4 class="fw-bold mb-1">Mission &amp; Vision</h4>
+                  <p class="text-muted mb-0 small">Edit the mission and vision content shown on the page.</p>
+                </div>
+                <div class="card-body p-4">
+                  <form id="contentForm" class="row g-3">
+                    <div class="col-12">
+                      <label for="missionTitleInput" class="form-label fw-semibold">Mission Title</label>
+                      <input type="text" class="form-control" id="missionTitleInput" required>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="missionTextInput" class="form-label fw-semibold">Mission Text</label>
+                      <textarea class="form-control" id="missionTextInput" rows="4" required></textarea>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="visionTitleInput" class="form-label fw-semibold">Vision Title</label>
+                      <input type="text" class="form-control" id="visionTitleInput" required>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="visionTextInput" class="form-label fw-semibold">Vision Text</label>
+                      <textarea class="form-control" id="visionTextInput" rows="4" required></textarea>
+                    </div>
+
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save me-2"></i>
+                        Save Mission &amp; Vision
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FOCUS AREAS -->
+        <div
+          class="tab-pane fade"
+          id="focus-pane"
+          role="tabpanel"
+          aria-labelledby="focus-tab"
+          tabindex="0">
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+            <div>
+              <h3 class="fw-bold mb-1">Who We Are</h3>
+              <p class="text-muted mb-0">Cards shown under “Who We Are” on the public About page.</p>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="openAddFocusAreaModal">
+              <i class="bi bi-plus-circle me-2"></i>
+              Add Focus Area
+            </button>
+          </div>
+
+          <div class="row g-4" id="focusAreasGrid"></div>
+        </div>
+
+        <!-- SERVICES -->
+        <div
+          class="tab-pane fade"
+          id="services-pane"
+          role="tabpanel"
+          aria-labelledby="services-tab"
+          tabindex="0">
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+            <div>
+              <h3 class="fw-bold mb-1">What We Do</h3>
+              <p class="text-muted mb-0">Cards shown under the “What We Do” section.</p>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="openAddServiceModal">
+              <i class="bi bi-plus-circle me-2"></i>
+              Add Service Card
+            </button>
+          </div>
+
+          <div class="row g-4" id="servicesGrid"></div>
+        </div>
+
+        <!-- TEAM -->
+        <div
+          class="tab-pane fade"
+          id="team-pane"
+          role="tabpanel"
+          aria-labelledby="team-tab"
+          tabindex="0">
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+            <div>
+              <h3 class="fw-bold mb-1">People Involved</h3>
+              <p class="text-muted mb-0">Upload images and edit the people shown on the public About page.</p>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="openAddTeamModal">
+              <i class="bi bi-plus-circle me-2"></i>
+              Add Team Member
+            </button>
+          </div>
+
+          <div class="row g-4" id="teamGrid"></div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOCUS AREA MODAL -->
+  <div class="modal fade" id="focusAreaModal" tabindex="-1" aria-labelledby="focusAreaModalLabel">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="focusAreaModalLabel">Add Focus Area</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="focusAreaForm" class="row g-3">
+            <input type="hidden" id="focusAreaDocId">
+
+            <div class="col-12 col-md-6">
+              <label for="focusAreaTitleInput" class="form-label fw-semibold">Title</label>
+              <input type="text" class="form-control" id="focusAreaTitleInput" required>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="focusAreaIconInput" class="form-label fw-semibold">Icon</label>
+              <select class="form-select" id="focusAreaIconInput" required>
+                <option value="" selected disabled>Select icon</option>
+                <option value="bi-universal-access-circle">Disability Access</option>
+                <option value="bi-people">Gender Equality</option>
+                <option value="bi-book">Education</option>
+                <option value="bi-heart-pulse">Healthcare</option>
+                <option value="bi-hands-praying">Community Care</option>
+                <option value="bi-person-hearts">Inclusion</option>
+                <option value="bi-activity">Health Awareness</option>
+                <option value="bi-megaphone">Outreach</option>
+              </select>
+            </div>
+
+            <div class="col-12">
+              <label for="focusAreaDescriptionInput" class="form-label fw-semibold">Description</label>
+              <textarea class="form-control" id="focusAreaDescriptionInput" rows="4" required></textarea>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="focusAreaBadgeColorInput" class="form-label fw-semibold">Badge Color</label>
+              <select class="form-select" id="focusAreaBadgeColorInput" required>
+                <option value="bg-primary" selected>Primary</option>
+                <option value="bg-success">Success</option>
+                <option value="bg-warning text-dark">Warning</option>
+                <option value="bg-danger">Danger</option>
+                <option value="bg-info text-dark">Info</option>
+                <option value="bg-secondary">Secondary</option>
+                <option value="bg-dark">Dark</option>
+              </select>
+            </div>
+
+            <div class="col-12 col-md-3">
+              <label for="focusAreaOrderInput" class="form-label fw-semibold">Display Order</label>
+              <input type="number" class="form-control" id="focusAreaOrderInput" min="1" required>
+            </div>
+
+            <div class="col-12 col-md-3">
+              <label for="focusAreaStatusInput" class="form-label fw-semibold">Status</label>
+              <select class="form-select" id="focusAreaStatusInput" required>
+                <option value="true" selected>Active</option>
+                <option value="false">Inactive</option>
+              </select>
+            </div>
+
+            <div class="col-12 d-flex justify-content-end gap-2">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">Save Focus Area</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE MODAL -->
+  <div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="serviceModalLabel">Add Service Card</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="serviceForm" class="row g-3">
+            <input type="hidden" id="serviceDocId">
+
+            <div class="col-12 col-md-6">
+              <label for="serviceTitleInput" class="form-label fw-semibold">Title</label>
+              <input type="text" class="form-control" id="serviceTitleInput" required>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="serviceIconInput" class="form-label fw-semibold">Icon</label>
+              <select class="form-select" id="serviceIconInput" required>
+                <option value="" selected disabled>Select icon</option>
+                <option value="bi-clipboard2-pulse">Lab Test Booking</option>
+                <option value="bi-bag-heart">Health Packages</option>
+                <option value="bi-person-badge">Doctor Consultations</option>
+                <option value="bi-megaphone">Community Updates</option>
+                <option value="bi-heart-pulse">Health Support</option>
+                <option value="bi-geo-alt">Location Support</option>
+                <option value="bi-house-heart">Sample Collection</option>
+              </select>
+            </div>
+
+            <div class="col-12">
+              <label for="serviceDescriptionInput" class="form-label fw-semibold">Description</label>
+              <textarea class="form-control" id="serviceDescriptionInput" rows="4" required></textarea>
+            </div>
+
+            <div class="col-12 col-md-4">
+              <label for="serviceOrderInput" class="form-label fw-semibold">Display Order</label>
+              <input type="number" class="form-control" id="serviceOrderInput" min="1" required>
+            </div>
+
+            <div class="col-12 col-md-4">
+              <label for="serviceStatusInput" class="form-label fw-semibold">Status</label>
+              <select class="form-select" id="serviceStatusInput" required>
+                <option value="true" selected>Active</option>
+                <option value="false">Inactive</option>
+              </select>
+            </div>
+
+            <div class="col-12 d-flex justify-content-end gap-2">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">Save Service Card</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEAM MODAL -->
+  <div class="modal fade" id="teamModal" tabindex="-1" aria-labelledby="teamModalLabel">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="teamModalLabel">Add Team Member</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="teamForm" class="row g-3">
+            <input type="hidden" id="teamDocId">
+            <input type="hidden" id="teamExistingImageUrl">
+
+            <div class="col-12 col-md-6">
+              <label for="teamNameInput" class="form-label fw-semibold">Name</label>
+              <input type="text" class="form-control" id="teamNameInput" required>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="teamDesignationInput" class="form-label fw-semibold">Designation</label>
+              <input type="text" class="form-control" id="teamDesignationInput" required>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="teamImageInput" class="form-label fw-semibold">Upload Photo</label>
+              <input type="file" class="form-control" id="teamImageInput" accept="image/*">
+              <div class="form-text">
+                Recommended image size: under 800 KB.
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label class="form-label fw-semibold">Preview</label>
+              <div class="border rounded-3 p-2 bg-light">
+                <img
+                    id="teamImagePreview"
+                    src="https://via.placeholder.com/600x400?text=Preview"
+                    alt="Image preview"
+                    class="team-image-preview">
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="teamBioInput" class="form-label fw-semibold">Bio</label>
+              <textarea class="form-control" id="teamBioInput" rows="4" required></textarea>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="teamLinkedInInput" class="form-label fw-semibold">LinkedIn URL</label>
+              <input type="url" class="form-control" id="teamLinkedInInput" placeholder="Optional LinkedIn profile link">
+            </div>
+
+            <div class="col-12 col-md-3">
+              <label for="teamOrderInput" class="form-label fw-semibold">Display Order</label>
+              <input type="number" class="form-control" id="teamOrderInput" min="1" required>
+            </div>
+
+            <div class="col-12 col-md-3">
+              <label for="teamStatusInput" class="form-label fw-semibold">Status</label>
+              <select class="form-select" id="teamStatusInput" required>
+                <option value="true" selected>Active</option>
+                <option value="false">Inactive</option>
+              </select>
+            </div>
+
+            <div class="col-12 d-flex justify-content-end gap-2">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">Save Team Member</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Firebase Live Script -->
+  <script type="module" src="../js/manage-about.js"></script>
+
+<!-- ADMIN FOOTER -->
+<footer class="admin-footer mt-5">
+  <div class="container">
+
+    <div class="row g-4 align-items-center">
+
+      <div class="col-12 col-lg-4 text-center text-lg-start">
+
+        <div class="d-flex align-items-center justify-content-center justify-content-lg-start gap-2 mb-2">
+
+          <img
+            src="../assets/logos/CWF_Labs.png"
+            alt="CWF Labs Logo"
+            class="admin-footer-logo">
+
+          <h5 class="fw-bold mb-0">
+            CWF Labs Admin Portal
+          </h5>
+
+        </div>
+
+        <p class="mb-0 text-muted small">
+          Secure content management system for healthcare operations,
+          services, consultations, packages, bookings, and public website updates.
+        </p>
+
+      </div>
+
+      <div class="col-12 col-lg-4 text-center">
+
+        <div class="admin-footer-links">
+
+          <a href="dashboard.html">
+            Dashboard
+          </a>
+
+          <a href="manage-home.html">
+            Home
+          </a>
+
+          <a href="manage-tests.html">
+            Tests
+          </a>
+
+          <a href="manage-packages.html">
+            Packages
+          </a>
+
+          <a href="manage-doctors.html">
+            Doctors
+          </a>
+
+          <a href="manage-services.html">
+            Services
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="col-12 col-lg-4 text-center text-lg-end">
+
+        <div class="mb-2">
+
+          <span class="badge bg-success me-2">
+            Live Firestore
+          </span>
+
+          <span class="badge bg-primary">
+            Admin Access
+          </span>
+
+        </div>
+
+        <p class="mb-0 text-muted small">
+          © <span id="adminFooterYear"></span>
+          CWF Labs Admin Portal
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</footer>
+<script>
+document.getElementById("adminFooterYear").textContent =
+new Date().getFullYear();
+</script>
+</body>
+</html>

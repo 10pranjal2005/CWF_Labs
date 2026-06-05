@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Home Page | CWF Labs</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="bg-light">
+
+  <header class="sticky-top">
+    <nav class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container">
+        <a
+  class="navbar-brand fw-bold d-flex align-items-center gap-2"
+  href="../index.html">
+
+  <img
+    src="../assets/logos/CWF_Labs.png"
+    alt="CWF Labs Logo"
+    class="admin-navbar-logo">
+
+  <span>CWF Labs Admin Portal</span>
+
+</a>
+
+        <div class="d-flex align-items-center gap-2">
+          <a href="dashboard.html" class="btn btn-outline-light btn-sm">
+            <i class="bi bi-speedometer2 me-1"></i>
+            Dashboard
+          </a>
+          <a href="manage-tests.html" class="btn btn-outline-light btn-sm">
+            <i class="bi bi-droplet me-1"></i>
+            Tests
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="py-4 py-md-5">
+    <div class="container">
+
+      <section class="mb-4">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4 p-md-5">
+            <div class="row align-items-center g-4">
+              <div class="col-12 col-lg-8">
+                <p class="text-uppercase text-primary fw-semibold mb-2">Homepage Manager</p>
+                <h1 class="fw-bold mb-3">Make the Home Page Fully Editable</h1>
+                <p class="text-muted mb-0">
+                  Update the hero banner, who we are cards, news cards, contact block, and quick links from one place.
+                </p>
+              </div>
+              <div class="col-12 col-lg-4">
+                <div class="card border-0 bg-light">
+                  <div class="card-body p-4">
+                    <p class="text-muted mb-1">Editing Mode</p>
+                    <h4 class="fw-bold mb-0">Live Firestore</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HERO SETTINGS -->
+      <section class="mb-4">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4 p-md-5">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4">
+              <div>
+                <h2 class="section-title mb-1">Hero Section</h2>
+                <p class="section-description mb-0">Change the landing banner, buttons, and background image.</p>
+              </div>
+            </div>
+
+            <form id="heroForm" class="row g-3">
+              <div class="col-12 col-md-6">
+                <label for="heroTagline" class="form-label fw-semibold">Tagline</label>
+                <input type="text" class="form-control" id="heroTagline" required>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="heroBackgroundImage" class="form-label fw-semibold">Background Image URL</label>
+                <input type="url" class="form-control" id="heroBackgroundImage" required>
+              </div>
+
+              <div class="col-12">
+                <label for="heroTitle" class="form-label fw-semibold">Title</label>
+                <input type="text" class="form-control" id="heroTitle" required>
+              </div>
+
+              <div class="col-12">
+                <label for="heroDescription" class="form-label fw-semibold">Description</label>
+                <textarea class="form-control" id="heroDescription" rows="3" required></textarea>
+              </div>
+
+              <div class="col-12 col-md-3">
+                <label for="heroPrimaryButtonText" class="form-label fw-semibold">Primary Button Text</label>
+                <input type="text" class="form-control" id="heroPrimaryButtonText" required>
+              </div>
+
+              <div class="col-12 col-md-3">
+                <label for="heroPrimaryButtonLink" class="form-label fw-semibold">Primary Button Link</label>
+                <input type="text" class="form-control" id="heroPrimaryButtonLink" required>
+              </div>
+
+              <div class="col-12 col-md-3">
+                <label for="heroSecondaryButtonText" class="form-label fw-semibold">Secondary Button Text</label>
+                <input type="text" class="form-control" id="heroSecondaryButtonText" required>
+              </div>
+
+              <div class="col-12 col-md-3">
+                <label for="heroSecondaryButtonLink" class="form-label fw-semibold">Secondary Button Link</label>
+                <input type="text" class="form-control" id="heroSecondaryButtonLink" required>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="heroStatus" class="form-label fw-semibold">Status</label>
+                <select class="form-select" id="heroStatus" required>
+                  <option value="true" selected>Active</option>
+                  <option value="false">Inactive</option>
+                </select>
+              </div>
+
+              <div class="col-12 d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary btn-lg">
+                  Save Hero Settings
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURES -->
+      <section class="mb-4">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+          <div>
+            <h2 class="section-title mb-1">Who We Are Cards</h2>
+            <p class="section-description mb-0">Add, edit, or remove the four community focus cards and more.</p>
+          </div>
+
+          <button type="button" class="btn btn-primary" id="openAddFeatureModal">
+            <i class="bi bi-plus-circle me-2"></i>
+            Add New Card
+          </button>
+        </div>
+
+        <div class="row g-4" id="featuresGrid">
+          <!-- Live cards load here -->
+        </div>
+      </section>
+
+      <section class="mb-4">
+
+  <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+
+    <div>
+      <h2 class="section-title mb-1">
+        Why Choose Us Cards
+      </h2>
+
+      <p class="section-description mb-0">
+        Manage homepage Why Choose Us cards.
+      </p>
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-primary"
+      id="openAddWhyChooseModal">
+
+      <i class="bi bi-plus-circle me-2"></i>
+
+      Add New Card
+
+    </button>
+
+  </div>
+
+  <div class="row g-4" id="whyChooseGrid"></div>
+
+</section>
+
+      <!-- CONTACT SETTINGS -->
+      <section class="mb-4">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4 p-md-5">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4">
+              <div>
+                <h2 class="section-title mb-1">Contact Block</h2>
+                <p class="section-description mb-0">Edit the home page contact card and support details.</p>
+              </div>
+            </div>
+
+            <form id="contactForm" class="row g-3">
+              <div class="col-12 col-md-6">
+                <label for="contactCardTitle" class="form-label fw-semibold">Card Title</label>
+                <input type="text" class="form-control" id="contactCardTitle" required>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="contactWhatsapp" class="form-label fw-semibold">WhatsApp Number</label>
+                <input type="text" class="form-control" id="contactWhatsapp" required>
+              </div>
+
+              <div class="col-12">
+                <label for="contactCardDescription" class="form-label fw-semibold">Card Description</label>
+                <textarea class="form-control" id="contactCardDescription" rows="3" required></textarea>
+              </div>
+
+              <div class="col-12 col-md-4">
+                <label for="contactAddress" class="form-label fw-semibold">Address</label>
+                <input type="text" class="form-control" id="contactAddress" required>
+              </div>
+
+              <div class="col-12 col-md-4">
+                <label for="contactPhone" class="form-label fw-semibold">Phone</label>
+                <input type="text" class="form-control" id="contactPhone" required>
+              </div>
+
+              <div class="col-12 col-md-4">
+                <label for="contactEmail" class="form-label fw-semibold">Email</label>
+                <input type="email" class="form-control" id="contactEmail" required>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="contactStatus" class="form-label fw-semibold">Status</label>
+                <select class="form-select" id="contactStatus" required>
+                  <option value="true" selected>Active</option>
+                  <option value="false">Inactive</option>
+                </select>
+              </div>
+
+              <div class="col-12 d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary btn-lg">
+                  Save Contact Block
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUICK LINKS -->
+      <section class="mb-4">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+          <div>
+            <h2 class="section-title mb-1">Quick Links</h2>
+            <p class="section-description mb-0">Manage the shortcut links shown on the home page.</p>
+          </div>
+
+          <button type="button" class="btn btn-primary" id="openAddLinkModal">
+            <i class="bi bi-plus-circle me-2"></i>
+            Add New Link
+          </button>
+        </div>
+
+        <div class="row g-4" id="linksGrid">
+          <!-- Live links load here -->
+        </div>
+      </section>
+
+      <!-- NEWS -->
+      <section class="mb-4">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+          <div>
+            <h2 class="section-title mb-1">Homepage News Cards</h2>
+            <p class="section-description mb-0">Edit the four category news cards shown on the home page.</p>
+          </div>
+
+          <button type="button" class="btn btn-primary" id="openAddNewsModal">
+            <i class="bi bi-plus-circle me-2"></i>
+            Add / Edit News
+          </button>
+        </div>
+
+        <div class="row g-4" id="newsGrid">
+          <!-- Live news cards load here -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FEATURE MODAL -->
+  <div class="modal fade" id="featureModal" tabindex="-1" aria-labelledby="featureModalLabel">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="featureModalLabel">Add New Card</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="featureForm" class="row g-3">
+            <input type="hidden" id="featureDocId">
+
+            <div class="col-12">
+              <label for="featureTitle" class="form-label fw-semibold">Title</label>
+              <input type="text" class="form-control" id="featureTitle" required>
+            </div>
+
+            <div class="col-12">
+              <label for="featureDescription" class="form-label fw-semibold">Description</label>
+              <textarea class="form-control" id="featureDescription" rows="3" required></textarea>
+            </div>
+
+            <div class="col-12">
+              <label for="featureIcon" class="form-label fw-semibold">Icon</label>
+              <select class="form-select" id="featureIcon" required>
+                <option value="" selected disabled>Select icon</option>
+                <option value="bi-universal-access-circle">Disability</option>
+                <option value="bi-people">Gender</option>
+                <option value="bi-book">Education</option>
+                <option value="bi-heart-pulse">Healthcare</option>
+                <option value="bi-headset">Support</option>
+                <option value="bi-geo-alt">Location</option>
+                <option value="bi-bag-heart">Packages</option>
+                <option value="bi-person-badge">Doctors</option>
+                <option value="bi-grid-1x2">Services</option>
+              </select>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="featureDisplayOrder" class="form-label fw-semibold">Display Order</label>
+              <input type="number" class="form-control" id="featureDisplayOrder" min="1" required>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="featureStatus" class="form-label fw-semibold">Status</label>
+              <select class="form-select" id="featureStatus" required>
+                <option value="true" selected>Active</option>
+                <option value="false">Inactive</option>
+              </select>
+            </div>
+
+            <div class="col-12 d-flex justify-content-end gap-2">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">Save Card</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY CHOOSE US MODAL -->
+<div
+  class="modal fade"
+  id="whyChooseModal"
+  tabindex="-1"
+  aria-labelledby="whyChooseModalLabel">
+
+  <div class="modal-dialog modal-dialog-centered">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5
+          class="modal-title fw-bold"
+          id="whyChooseModalLabel">
+
+          Add New Card
+
+        </h5>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close">
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        <form
+          id="whyChooseForm"
+          class="row g-3">
+
+          <input
+            type="hidden"
+            id="whyChooseDocId">
+
+          <div class="col-12">
+            <label
+              for="whyChooseTitle"
+              class="form-label fw-semibold">
+
+              Title
+
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              id="whyChooseTitle"
+              required>
+          </div>
+
+          <div class="col-12">
+            <label
+              for="whyChooseDescription"
+              class="form-label fw-semibold">
+
+              Description
+
+            </label>
+
+            <textarea
+              class="form-control"
+              id="whyChooseDescription"
+              rows="3"
+              required>
+            </textarea>
+          </div>
+
+          <div class="col-12">
+            <label
+              for="whyChooseIcon"
+              class="form-label fw-semibold">
+
+              Icon
+
+            </label>
+
+            <select
+              class="form-select"
+              id="whyChooseIcon"
+              required>
+
+              <option value="" selected disabled>
+                Select icon
+              </option>
+
+              <option value="bi-cash-coin">
+                Affordable Healthcare
+              </option>
+
+              <option value="bi-person-badge">
+                Expert Professionals
+              </option>
+
+              <option value="bi-lightning-charge">
+                Fast Reports
+              </option>
+
+              <option value="bi-shield-check">
+                Trusted Service
+              </option>
+
+              <option value="bi-heart-pulse">
+                Healthcare
+              </option>
+
+              <option value="bi-headset">
+                Support
+              </option>
+
+              <option value="bi-award">
+                Quality
+              </option>
+
+              <option value="bi-star">
+                Excellence
+              </option>
+
+            </select>
+          </div>
+
+          <div class="col-12 col-md-6">
+
+            <label
+              for="whyChooseDisplayOrder"
+              class="form-label fw-semibold">
+
+              Display Order
+
+            </label>
+
+            <input
+              type="number"
+              class="form-control"
+              id="whyChooseDisplayOrder"
+              min="1"
+              required>
+
+          </div>
+
+          <div class="col-12 col-md-6">
+
+            <label
+              for="whyChooseStatus"
+              class="form-label fw-semibold">
+
+              Status
+
+            </label>
+
+            <select
+              class="form-select"
+              id="whyChooseStatus"
+              required>
+
+              <option value="true" selected>
+                Active
+              </option>
+
+              <option value="false">
+                Inactive
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="col-12 d-flex justify-content-end gap-2">
+
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              data-bs-dismiss="modal">
+
+              Cancel
+
+            </button>
+
+            <button
+              type="submit"
+              class="btn btn-primary">
+
+              Save Card
+
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+  <!-- LINK MODAL -->
+  <div class="modal fade" id="linkModal" tabindex="-1" aria-labelledby="linkModalLabel">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="linkModalLabel">Add New Link</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="linkForm" class="row g-3">
+            <input type="hidden" id="linkDocId">
+
+            <div class="col-12">
+              <label for="linkTitle" class="form-label fw-semibold">Link Title</label>
+              <input type="text" class="form-control" id="linkTitle" required>
+            </div>
+
+            <div class="col-12">
+              <label for="linkUrl" class="form-label fw-semibold">URL</label>
+              <input type="text" class="form-control" id="linkUrl" required>
+            </div>
+
+            <div class="col-12">
+              <label for="linkIcon" class="form-label fw-semibold">Icon</label>
+              <select class="form-select" id="linkIcon" required>
+                <option value="" selected disabled>Select icon</option>
+                <option value="bi-building">About Us</option>
+                <option value="bi-journal-text">Blogs</option>
+                <option value="bi-search">Research</option>
+                <option value="bi-people-fill">Partners</option>
+                <option value="bi-chat-dots">Contact</option>
+                <option value="bi-house-gear">Home</option>
+                <option value="bi-link-45deg">Link</option>
+              </select>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="linkDisplayOrder" class="form-label fw-semibold">Display Order</label>
+              <input type="number" class="form-control" id="linkDisplayOrder" min="1" required>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="linkStatus" class="form-label fw-semibold">Status</label>
+              <select class="form-select" id="linkStatus" required>
+                <option value="true" selected>Active</option>
+                <option value="false">Inactive</option>
+              </select>
+            </div>
+
+            <div class="col-12 d-flex justify-content-end gap-2">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">Save Link</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEWS MODAL -->
+  <div class="modal fade" id="newsModal" tabindex="-1" aria-labelledby="newsModalLabel">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="newsModalLabel">Add News Card</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="newsForm" class="row g-3">
+            <input type="hidden" id="newsDocId">
+
+            <div class="col-12 col-md-6">
+              <label for="newsTitle" class="form-label fw-semibold">Title</label>
+              <input type="text" class="form-control" id="newsTitle" required>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="newsCategory" class="form-label fw-semibold">Category</label>
+              <select class="form-select" id="newsCategory" required>
+                <option value="" selected disabled>Select category</option>
+                <option value="Disability">Disability</option>
+                <option value="Gender">Gender</option>
+                <option value="Education">Education</option>
+                <option value="Healthcare">Healthcare</option>
+              </select>
+            </div>
+
+            <div class="col-12">
+              <label for="newsDescription" class="form-label fw-semibold">Description</label>
+              <textarea class="form-control" id="newsDescription" rows="4" required></textarea>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="newsDisplayOrder" class="form-label fw-semibold">Display Order</label>
+              <input type="number" class="form-control" id="newsDisplayOrder" min="1" required>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="newsStatus" class="form-label fw-semibold">Status</label>
+              <select class="form-select" id="newsStatus" required>
+                <option value="true" selected>Active</option>
+                <option value="false">Inactive</option>
+              </select>
+            </div>
+
+            <div class="col-12 d-flex justify-content-end gap-2">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">Save News</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Firestore JS -->
+  <script type="module" src="../js/manage-home.js"></script>
+
+  <!-- ADMIN FOOTER -->
+<footer class="admin-footer mt-5">
+  <div class="container">
+
+    <div class="row g-4 align-items-center">
+
+      <div class="col-12 col-lg-4 text-center text-lg-start">
+
+        <div class="d-flex align-items-center justify-content-center justify-content-lg-start gap-2 mb-2">
+
+          <img
+            src="../assets/logos/CWF_Labs.png"
+            alt="CWF Labs Logo"
+            class="admin-footer-logo">
+
+          <h5 class="fw-bold mb-0">
+            CWF Labs Admin Portal
+          </h5>
+
+        </div>
+
+        <p class="mb-0 text-muted small">
+          Secure content management system for healthcare operations,
+          services, consultations, packages, bookings, and public website updates.
+        </p>
+
+      </div>
+
+      <div class="col-12 col-lg-4 text-center">
+
+        <div class="admin-footer-links">
+
+          <a href="dashboard.html">
+            Dashboard
+          </a>
+
+          <a href="manage-home.html">
+            Home
+          </a>
+
+          <a href="manage-tests.html">
+            Tests
+          </a>
+
+          <a href="manage-packages.html">
+            Packages
+          </a>
+
+          <a href="manage-doctors.html">
+            Doctors
+          </a>
+
+          <a href="manage-services.html">
+            Services
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="col-12 col-lg-4 text-center text-lg-end">
+
+        <div class="mb-2">
+
+          <span class="badge bg-success me-2">
+            Live Firestore
+          </span>
+
+          <span class="badge bg-primary">
+            Admin Access
+          </span>
+
+        </div>
+
+        <p class="mb-0 text-muted small">
+          © <span id="adminFooterYear"></span>
+          CWF Labs Admin Portal
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</footer>
+<script>
+document.getElementById("adminFooterYear").textContent =
+new Date().getFullYear();
+</script>
+</body>
+</html>

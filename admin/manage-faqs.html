@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage FAQs | CWF Labs</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="bg-light">
+
+  <!-- ADMIN TOP BAR -->
+  <header class="sticky-top">
+    <nav class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container">
+        <a
+  class="navbar-brand fw-bold d-flex align-items-center gap-2"
+  href="../index.html">
+
+  <img
+    src="../assets/logos/CWF_Labs.png"
+    alt="CWF Labs Logo"
+    class="admin-navbar-logo">
+
+  <span>CWF Labs Admin Portal</span>
+
+</a>
+
+        <div class="d-flex align-items-center gap-2">
+          <a href="dashboard.html" class="btn btn-outline-light btn-sm">
+            <i class="bi bi-speedometer2 me-1"></i>
+            Dashboard
+          </a>
+
+          <a href="manage-services.html" class="btn btn-outline-light btn-sm">
+            <i class="bi bi-grid-1x2 me-1"></i>
+            Services
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="py-4 py-md-5">
+    <div class="container">
+
+      <!-- PAGE HEADER -->
+      <div class="row align-items-center mb-4 g-3">
+        <div class="col-12 col-lg-8">
+          <h1 class="fw-bold mb-2">Manage FAQs</h1>
+          <p class="text-muted mb-0">
+            Add, edit, and remove frequently asked questions shown on the public FAQ page.
+          </p>
+        </div>
+
+        <div class="col-12 col-lg-4">
+          <div class="d-grid">
+            <button type="button" class="btn btn-primary btn-lg" id="openAddFaqModal">
+              <i class="bi bi-plus-circle me-2"></i>
+              Add New FAQ
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STATS CARDS -->
+      <div class="row g-3 mb-4">
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <p class="text-muted mb-1">Total FAQs</p>
+              <h3 class="fw-bold mb-0" id="totalFaqsCount">0</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <p class="text-muted mb-1">Public</p>
+              <h3 class="fw-bold mb-0 text-success" id="publicFaqsCount">0</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <p class="text-muted mb-1">Draft</p>
+              <h3 class="fw-bold mb-0 text-warning" id="draftFaqsCount">0</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <p class="text-muted mb-1">Categories</p>
+              <h3 class="fw-bold mb-0 text-primary" id="faqCategoriesCount">0</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEARCH / FILTER -->
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body p-3 p-md-4">
+          <div class="row g-3 align-items-end">
+            <div class="col-12 col-md-5">
+              <label for="searchFaqs" class="form-label fw-semibold">Search FAQs</label>
+              <input
+                type="search"
+                class="form-control"
+                id="searchFaqs"
+                placeholder="Search by question, answer, or category">
+            </div>
+
+            <div class="col-12 col-md-3">
+              <label for="filterFaqCategory" class="form-label fw-semibold">Category</label>
+              <select class="form-select" id="filterFaqCategory">
+                <option value="all" selected>All Categories</option>
+                <option value="booking">Booking</option>
+                <option value="account">Account</option>
+                <option value="service">Service</option>
+                <option value="support">Support</option>
+              </select>
+            </div>
+
+            <div class="col-12 col-md-2">
+              <label for="filterFaqStatus" class="form-label fw-semibold">Status</label>
+              <select class="form-select" id="filterFaqStatus">
+                <option value="all" selected>All</option>
+                <option value="public">Public</option>
+                <option value="draft">Draft</option>
+              </select>
+            </div>
+
+            <div class="col-12 col-md-2">
+              <div class="d-grid">
+                <button type="button" class="btn btn-outline-primary" id="clearFiltersBtn">
+                  <i class="bi bi-funnel me-1"></i>
+                  Clear
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOADING / EMPTY STATE -->
+      <div class="card border-0 shadow-sm mb-4 d-none" id="loadingCard">
+        <div class="card-body p-4 text-center">
+          <div class="spinner-border text-primary mb-3" role="status" aria-label="Loading"></div>
+          <p class="mb-0">Loading FAQs from Firestore...</p>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm mb-4 d-none" id="emptyStateCard">
+        <div class="card-body p-4 text-center">
+          <i class="bi bi-inbox fs-1 text-muted mb-3 d-block"></i>
+          <h4 class="fw-bold mb-2">No FAQs found</h4>
+          <p class="text-muted mb-0">
+            Add your first FAQ to start showing it on the public website.
+          </p>
+        </div>
+      </div>
+
+      <!-- DESKTOP TABLE -->
+      <div class="card border-0 shadow-sm d-none d-lg-block">
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th class="px-4 py-3">Question</th>
+                  <th class="px-4 py-3">Category</th>
+                  <th class="px-4 py-3">Status</th>
+                  <th class="px-4 py-3">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="faqsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOBILE CARDS -->
+      <div class="d-lg-none row g-4" id="faqsMobileGrid"></div>
+
+
+    </div>
+  </main>
+
+  <!-- ADD / EDIT FAQ MODAL -->
+  <div class="modal fade" id="faqModal" tabindex="-1" aria-labelledby="faqModalLabel">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="faqModalLabel">Add New FAQ</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="faqForm" class="row g-3">
+            <input type="hidden" id="faqDocId">
+
+            <div class="col-12">
+              <label for="faqQuestion" class="form-label fw-semibold">Question</label>
+              <input
+                type="text"
+                class="form-control"
+                id="faqQuestion"
+                placeholder="Enter FAQ question"
+                required>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="faqCategory" class="form-label fw-semibold">Category</label>
+              <select class="form-select" id="faqCategory" required>
+                <option value="" selected disabled>Select category</option>
+                <option value="booking">Booking</option>
+                <option value="account">Account</option>
+                <option value="service">Service</option>
+                <option value="support">Support</option>
+              </select>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="faqStatus" class="form-label fw-semibold">Status</label>
+              <select class="form-select" id="faqStatus" required>
+                <option value="true" selected>Public</option>
+                <option value="false">Draft</option>
+              </select>
+            </div>
+
+            <div class="col-12">
+              <label for="faqAnswer" class="form-label fw-semibold">Answer</label>
+              <textarea
+                class="form-control"
+                id="faqAnswer"
+                rows="5"
+                placeholder="Enter FAQ answer"
+                required></textarea>
+            </div>
+
+            <div class="col-12 d-flex justify-content-end gap-2">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-primary" id="saveFaqBtn">
+                Save FAQ
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Firebase CRUD Script -->
+  <script type="module" src="../js/manage-faqs.js"></script>
+
+  <!-- ADMIN FOOTER -->
+<footer class="admin-footer mt-5">
+  <div class="container">
+
+    <div class="row g-4 align-items-center">
+
+      <div class="col-12 col-lg-4 text-center text-lg-start">
+
+        <div class="d-flex align-items-center justify-content-center justify-content-lg-start gap-2 mb-2">
+
+          <img
+            src="../assets/logos/CWF_Labs.png"
+            alt="CWF Labs Logo"
+            class="admin-footer-logo">
+
+          <h5 class="fw-bold mb-0">
+            CWF Labs Admin Portal
+          </h5>
+
+        </div>
+
+        <p class="mb-0 text-muted small">
+          Secure content management system for healthcare operations,
+          services, consultations, packages, bookings, and public website updates.
+        </p>
+
+      </div>
+
+      <div class="col-12 col-lg-4 text-center">
+
+        <div class="admin-footer-links">
+
+          <a href="dashboard.html">
+            Dashboard
+          </a>
+
+          <a href="manage-home.html">
+            Home
+          </a>
+
+          <a href="manage-tests.html">
+            Tests
+          </a>
+
+          <a href="manage-packages.html">
+            Packages
+          </a>
+
+          <a href="manage-doctors.html">
+            Doctors
+          </a>
+
+          <a href="manage-services.html">
+            Services
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="col-12 col-lg-4 text-center text-lg-end">
+
+        <div class="mb-2">
+
+          <span class="badge bg-success me-2">
+            Live Firestore
+          </span>
+
+          <span class="badge bg-primary">
+            Admin Access
+          </span>
+
+        </div>
+
+        <p class="mb-0 text-muted small">
+          © <span id="adminFooterYear"></span>
+          CWF Labs Admin Portal
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</footer>
+<script>
+document.getElementById("adminFooterYear").textContent =
+new Date().getFullYear();
+</script>
+</body>
+</html>

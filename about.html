@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | CWF Labs</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <!-- HEADER / NAVBAR -->
+  <header class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-pink shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+  <img
+    src="assets/logos/CWF_Labs.png"
+    alt="CWF Labs Logo"
+    class="navbar-logo">
+</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html" data-i18n="nav_home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tests.html" data-i18n="nav_book_test">Book a Test</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="packages.html" data-i18n="nav_packages">Health Packages</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="doctors.html" data-i18n="nav_doctors">Consult an Expert</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html" data-i18n="nav_services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html" data-i18n="nav_contact">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="feedback.html">Feedback</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="about.html" data-i18n="nav_about">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="faq.html" data-i18n="nav_faq">FAQs</a>
+            </li>
+
+            <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+              <a class="btn btn-outline-warning btn-sm fw-bold px-3" href="admin/login.html">
+                Admin
+              </a>
+            </li>
+
+            <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+              <button
+                id="langToggle"
+                class="btn btn-warning btn-sm fw-semibold px-3"
+                type="button">
+                EN / বাংলা
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+    <!-- LIVE UPDATE BAR -->
+<div class="cwf-update-bar">
+  <div class="cwf-update-track">
+    <span>Latest: Free blood sugar camp every Sunday at CWF Labs &nbsp;•&nbsp;</span>
+    <span>New doctor consultation slots now available &nbsp;•&nbsp;</span>
+    <span>Book lab tests by WhatsApp or call for quick support &nbsp;•&nbsp;</span>
+    <span>Home sample collection requests are now being accepted &nbsp;•&nbsp;</span>
+    <span>New health packages added this week &nbsp;•&nbsp;</span>
+
+    <!-- duplicate content for smooth loop -->
+    <span>Latest: Free blood sugar camp every Sunday at CWF Labs &nbsp;•&nbsp;</span>
+    <span>New doctor consultation slots now available &nbsp;•&nbsp;</span>
+    <span>Book lab tests by WhatsApp or call for quick support &nbsp;•&nbsp;</span>
+    <span>Home sample collection requests are now being accepted &nbsp;•&nbsp;</span>
+    <span>New health packages added this week &nbsp;•&nbsp;</span>
+  </div>
+</div>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="about-hero text-white py-5">
+      <div class="container py-3 py-lg-4">
+        <div class="row align-items-center g-4">
+          <div class="col-12 col-lg-7">
+            <p class="about-section-kicker text-warning mb-3" id="heroTagline">
+              About CWF Labs
+            </p>
+
+            <h1 class="hero-title display-5 fw-bold mb-3" id="heroTitle">
+              Who we are and what we do
+            </h1>
+
+            <p class="hero-description lead mb-4" id="heroDescription">
+              CWF Labs is a community-focused healthcare platform created to make lab
+              services, doctor access, and health support easier for rural and underserved
+              communities.
+            </p>
+
+            <div class="d-flex flex-wrap gap-3">
+              <a href="tests.html" class="btn btn-primary btn-lg">
+                Book a Test
+              </a>
+
+              <a href="contact.html" class="btn btn-outline-light btn-lg">
+                Contact Us
+              </a>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-5">
+            <div class="about-panel">
+              <img
+                id="heroImage"
+                src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200&auto=format&fit=crop"
+                alt="About CWF Labs">
+
+              <div class="p-4 p-md-5">
+                <h5 class="fw-bold mb-3 text-dark">Our Focus Areas</h5>
+                <div id="heroFocusAreas" class="d-flex flex-wrap gap-2">
+                  <!-- Live badges -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO WE ARE -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold">Who We Are</h2>
+          <p class="text-muted mb-0">
+            The four focus pillars of CWF Labs, now editable from the admin panel.
+          </p>
+        </div>
+
+        <div class="row g-4" id="focusAreasGrid">
+          <!-- Live focus cards -->
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION / VISION -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-4 align-items-stretch">
+          <div class="col-12 col-lg-6">
+            <div class="card h-100 border-0 shadow-sm about-elevated-card">
+              <div class="card-body p-4 p-md-5">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                  <div class="feature-icon flex-shrink-0">
+                    <i class="bi bi-bullseye"></i>
+                  </div>
+                  <h2 class="fw-bold mb-0" id="missionTitle">Our Mission</h2>
+                </div>
+                <p class="text-muted mb-0" id="missionText">
+                  To provide accessible, affordable, and community-driven healthcare services
+                  while supporting social inclusion, awareness, and development across our focus areas.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-6">
+            <div class="card h-100 border-0 shadow-sm about-elevated-card">
+              <div class="card-body p-4 p-md-5">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                  <div class="feature-icon flex-shrink-0">
+                    <i class="bi bi-eye"></i>
+                  </div>
+                  <h2 class="fw-bold mb-0" id="visionTitle">Our Vision</h2>
+                </div>
+                <p class="text-muted mb-0" id="visionText">
+                  To become a trusted digital healthcare and community support platform that improves quality of life
+                  for people in rural and underserved regions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT WE DO -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold">What We Do</h2>
+          <p class="text-muted mb-0">
+            Services and community support initiatives delivered by CWF Labs.
+          </p>
+        </div>
+
+        <div class="row g-4" id="servicesGrid">
+          <!-- Live service cards -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM / PEOPLE INVOLVED -->
+    <section class="py-5">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold">People Involved</h2>
+          <p class="text-muted mb-0">
+            Team members, leaders, and contributors can all be managed from the admin side.
+          </p>
+        </div>
+
+        <div class="row g-4" id="teamGrid">
+          <!-- Live team cards -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <div class="card border-0 shadow-sm about-elevated-card">
+          <div class="card-body p-4 p-md-5">
+            <div class="row align-items-center g-4">
+              <div class="col-12 col-lg-8">
+                <h2 class="fw-bold mb-2">Want to connect with us?</h2>
+                <p class="text-muted mb-0">
+                  Reach out to CWF Labs for bookings, consultations, sample collection details, or community support.
+                </p>
+              </div>
+
+              <div class="col-12 col-lg-4">
+                <div class="d-grid gap-2">
+                  <a href="contact.html" class="btn btn-primary">
+                    <i class="bi bi-chat-dots me-2"></i>
+                    Contact Us
+                  </a>
+                  <a href="admin/login.html" class="btn btn-outline-dark">
+                    <i class="bi bi-shield-lock me-2"></i>
+                    Admin Portal
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+<footer class="site-footer text-white">
+  <div class="footer-top py-5">
+    <div class="container">
+      <div class="row g-4 align-items-start">
+
+        <div class="col-12 col-lg-4">
+          <a href="index.html" class="footer-brand d-inline-flex align-items-center gap-2 mb-3">
+            <img src="assets/logos/CWF_Labs.png" alt="CWF Labs Logo" class="footer-logo">
+          </a>
+
+          <p class="footer-text mb-4">
+            Accessible healthcare, test booking, consultations, and community support for everyone.
+          </p>
+
+          <div class="d-flex gap-2 flex-wrap">
+            <a href="tests.html" class="btn btn-sm btn-light footer-action-btn">Book a Test</a>
+            <a href="packages.html" class="btn btn-sm btn-outline-light footer-action-btn">Health Packages</a>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5 class="footer-title">Quick Links</h5>
+          <ul class="footer-links list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="tests.html">Tests</a></li>
+            <li><a href="packages.html">Packages</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5 class="footer-title">Services</h5>
+          <ul class="footer-links list-unstyled">
+            <li><a href="doctors.html">Doctors</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-lg-4">
+          <h5 class="footer-title">Contact</h5>
+
+          <div class="footer-contact-box">
+            <p class="mb-2">
+              <i class="bi bi-geo-alt me-2"></i>
+              Maya Villa, 10/72, Bijoygarh Rd, beside baro bhuter mandir, Bijoygarh, Regent Estate, Jadavpur, Kolkata, West Bengal 700092
+            </p>
+            <p class="mb-2">
+              <i class="bi bi-telephone me-2"></i>
+              +91 8961772773
+            </p>
+            <p class="mb-0">
+              <i class="bi bi-envelope me-2"></i>
+              civilianwelfarefoundation@gmail.com
+            </p>
+          </div>
+
+          <div class="d-flex gap-2 mt-4">
+
+  <a
+    href="https://www.facebook.com/p/CWF-Labs-Transdisciplinary-healthcare-and-research-100086049177970/"
+    class="footer-social"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Facebook">
+
+    <i class="bi bi-facebook"></i>
+
+  </a>
+
+  <a
+    href="https://www.instagram.com/civilian_welfare_foundation/"
+    class="footer-social"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram">
+
+    <i class="bi bi-instagram"></i>
+
+  </a>
+
+  <a
+    href="https://wa.me/918961772773"
+    class="footer-social"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="WhatsApp">
+
+    <i class="bi bi-whatsapp"></i>
+
+  </a>
+
+  <a
+    href="https://in.linkedin.com/company/civilian-welfare-foundation"
+    class="footer-social"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn">
+
+    <i class="bi bi-linkedin"></i>
+
+  </a>
+
+</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom py-3">
+    <div class="container">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+        <p class="mb-0 small">
+          © <span id="footerYear"></span> CWF Labs. All rights reserved.
+        </p>
+
+        <p class="mb-0 small footer-bottom-text">
+          Building accessible healthcare for rural communities.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const footerYear = document.getElementById("footerYear");
+  if (footerYear) footerYear.textContent = new Date().getFullYear();
+</script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Existing JS -->
+  <script src="js/main.js"></script>
+  <script src="js/language.js"></script>
+
+  <!-- Live About module -->
+  <script type="module" src="js/about.js"></script>
+
+</body>
+</html>

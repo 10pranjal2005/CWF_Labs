@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CWF Labs</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <!-- ========================= -->
+  <!-- HEADER / NAVBAR -->
+  <!-- ========================= -->
+
+  <header class="sticky-top">
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-pink shadow-sm">
+      <div class="container">
+
+        <a class="navbar-brand" href="index.html">
+  <img
+    src="assets/logos/CWF_Labs.png"
+    alt="CWF Labs Logo"
+    class="navbar-logo">
+</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+
+          <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2">
+
+            <li class="nav-item">
+              <a class="nav-link active fw-bold" href="index.html">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="tests.html">Book a Test</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="packages.html">Health Packages</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="doctors.html">Consult an Expert</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="services.html">Services</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="contact.html">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="feedback.html">Feedback</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="about.html">About Us</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="faq.html">FAQs</a>
+            </li>
+
+            <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+              <a class="btn btn-outline-warning btn-sm fw-bold px-3" href="admin/login.html">
+                Admin
+              </a>
+            </li>
+
+            <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+              <button id="langToggle" type="button" class="btn btn-warning btn-sm fw-bold px-3">
+                EN / বাংলা
+              </button>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+    </nav>
+
+  </header>
+
+  <!-- LIVE UPDATE BAR -->
+<div class="cwf-update-bar">
+  <div class="cwf-update-track">
+    <span>Latest: Free blood sugar camp every Sunday at CWF Labs &nbsp;•&nbsp;</span>
+    <span>New doctor consultation slots now available &nbsp;•&nbsp;</span>
+    <span>Book lab tests by WhatsApp or call for quick support &nbsp;•&nbsp;</span>
+    <span>Home sample collection requests are now being accepted &nbsp;•&nbsp;</span>
+    <span>New health packages added this week &nbsp;•&nbsp;</span>
+
+    <!-- duplicate content for smooth loop -->
+    <span>Latest: Free blood sugar camp every Sunday at CWF Labs &nbsp;•&nbsp;</span>
+    <span>New doctor consultation slots now available &nbsp;•&nbsp;</span>
+    <span>Book lab tests by WhatsApp or call for quick support &nbsp;•&nbsp;</span>
+    <span>Home sample collection requests are now being accepted &nbsp;•&nbsp;</span>
+    <span>New health packages added this week &nbsp;•&nbsp;</span>
+  </div>
+</div>
+
+  <!-- ========================= -->
+  <!-- MAIN CONTENT -->
+  <!-- ========================= -->
+
+  <main>
+
+    <!-- ========================= -->
+    <!-- HERO SECTION -->
+    <!-- ========================= -->
+
+    <section class="hero-section text-white d-flex align-items-center" id="homepageHeroSection">
+
+      <div class="container">
+
+        <div class="row align-items-center min-vh-75">
+
+          <div class="col-lg-7">
+
+            <p class="hero-tagline" id="heroTagline">
+              Healthcare for Everyone
+            </p>
+
+            <h1 class="hero-title" id="heroTitle">
+              CWF Labs – Accessible Healthcare for Rural Communities
+            </h1>
+
+            <p class="hero-description" id="heroDescription">
+              Book tests, explore health packages, consult doctors,
+              and access healthcare support from anywhere.
+            </p>
+
+            <div class="d-flex flex-wrap gap-3">
+
+              <a href="tests.html" class="btn btn-primary btn-lg" id="heroPrimaryBtn">
+                Book a Test
+              </a>
+
+              <a href="packages.html" class="btn btn-outline-light btn-lg" id="heroSecondaryBtn">
+                View Packages
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- WHO WE ARE SECTION -->
+    <!-- ========================= -->
+
+    <section class="py-5 bg-light">
+
+      <div class="container">
+
+        <div class="text-center mb-5">
+
+          <h2 class="section-title">
+            Who We Are
+          </h2>
+
+          <p class="section-description">
+            We work across disability, gender, education,
+            and healthcare for better community impact.
+          </p>
+
+        </div>
+
+        <div class="row g-4" id="homepageFeaturesGrid">
+          <!-- Live Firestore feature cards load here -->
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ========================= -->
+<!-- WHY CHOOSE US -->
+<!-- ========================= -->
+
+<section class="py-5">
+
+  <div class="container">
+
+    <div class="text-center mb-5">
+
+      <h2 class="section-title">
+        Why Choose Us
+      </h2>
+
+      <p class="section-description">
+        Trusted healthcare services designed for accessibility,
+        affordability, and community well-being.
+      </p>
+
+    </div>
+
+    <div class="row g-4" id="homepageWhyChooseGrid">
+      <!-- Live Firestore cards load here -->
+    </div>
+
+  </div>
+
+</section>
+
+    <!-- ========================= -->
+    <!-- NEWS SECTION -->
+    <!-- ========================= -->
+
+    <section class="py-5">
+
+      <div class="container">
+
+        <div class="text-center mb-5">
+
+          <h2 class="section-title">
+            Latest News from CWF
+          </h2>
+
+          <p class="section-description">
+            Important updates and announcements from the organization.
+          </p>
+
+        </div>
+
+        <div class="row g-4" id="homepageNewsGrid">
+          <!-- Live Firestore news cards load here -->
+        </div>
+
+      </div>
+
+    </section>
+
+<!-- ========================= -->
+
+<!-- WHAT PEOPLE SAY ABOUT CWF LABS -->
+
+<!-- ========================= -->
+
+<section class="py-5 bg-light">
+
+  <div class="container">
+
+    <div class="text-center mb-5">
+
+      <span class="text-uppercase fw-bold text-primary">
+        Community Feedback
+      </span>
+
+      <h2 class="section-title mt-2">
+        What People Say About CWF Labs
+      </h2>
+
+      <p class="section-description">
+        Real experiences shared by our patients and community members.
+      </p>
+
+    </div>
+
+    <div class="testimonial-container">
+
+      <button
+        type="button"
+        id="feedbackPrev"
+        class="testimonial-arrow"
+        aria-label="Previous Feedback">
+
+        <i class="bi bi-arrow-left"></i>
+
+      </button>
+
+      <div
+        id="feedbackSlider"
+        class="testimonial-grid">
+
+      </div>
+
+      <button
+        type="button"
+        id="feedbackNext"
+        class="testimonial-arrow"
+        aria-label="Next Feedback">
+
+        <i class="bi bi-arrow-right"></i>
+
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+    <!-- ========================= -->
+    <!-- CONTACT SECTION -->
+    <!-- ========================= -->
+
+    <section class="py-5 bg-light">
+
+      <div class="container">
+
+        <div class="row g-4">
+
+          <div class="col-12 col-lg-5">
+
+            <div class="card border-0 shadow-sm h-100">
+
+              <div class="card-body p-4">
+
+                <h3 class="fw-bold mb-4" id="homeContactCardTitle">
+                  Contact Us
+                </h3>
+
+                <p class="text-muted mb-4" id="homeContactCardDescription">
+                  Reach us for customer support, consultation requests, lab location details, and sample collection information.
+                </p>
+
+                <ul class="list-unstyled mb-0">
+
+                  <li class="mb-3">
+                    <i class="bi bi-geo-alt-fill text-primary me-2"></i>
+                    <span id="homeContactAddress">Address goes here</span>
+                  </li>
+
+                  <li class="mb-3">
+                    <i class="bi bi-telephone-fill text-primary me-2"></i>
+                    <span id="homeContactPhone">Phone number goes here</span>
+                  </li>
+
+                  <li class="mb-3">
+                    <i class="bi bi-envelope-fill text-primary me-2"></i>
+                    <span id="homeContactEmail">Email address goes here</span>
+                  </li>
+
+                </ul>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-12 col-lg-7">
+
+            <div class="card border-0 shadow-sm h-100">
+
+              <div class="card-body p-4">
+
+                <h3 class="fw-bold mb-4">
+                  Quick Links
+                </h3>
+
+                <div class="row g-3" id="homepageLinksGrid">
+                  <!-- Live Firestore quick links load here -->
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ========================= -->
+  <!-- FOOTER -->
+  <!-- ========================= -->
+
+<footer class="site-footer text-white">
+  <div class="footer-top py-5">
+    <div class="container">
+      <div class="row g-4 align-items-start">
+
+        <div class="col-12 col-lg-4">
+          <a href="index.html" class="footer-brand d-inline-flex align-items-center gap-2 mb-3">
+            <img src="assets/logos/CWF_Labs.png" alt="CWF Labs Logo" class="footer-logo">
+          </a>
+
+          <p class="footer-text mb-4">
+            Accessible healthcare, test booking, consultations, and community support for everyone.
+          </p>
+
+          <div class="d-flex gap-2 flex-wrap">
+            <a href="tests.html" class="btn btn-sm btn-light footer-action-btn">Book a Test</a>
+            <a href="packages.html" class="btn btn-sm btn-outline-light footer-action-btn">Health Packages</a>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5 class="footer-title">Quick Links</h5>
+          <ul class="footer-links list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="tests.html">Tests</a></li>
+            <li><a href="packages.html">Packages</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5 class="footer-title">Services</h5>
+          <ul class="footer-links list-unstyled">
+            <li><a href="doctors.html">Doctors</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-lg-4">
+          <h5 class="footer-title">Contact</h5>
+
+          <div class="footer-contact-box">
+            <p class="mb-2">
+              <i class="bi bi-geo-alt me-2"></i>
+              Maya Villa, 10/72, Bijoygarh Rd, beside baro bhuter mandir, Bijoygarh, Regent Estate, Jadavpur, Kolkata, West Bengal 700092
+            </p>
+            <p class="mb-2">
+              <i class="bi bi-telephone me-2"></i>
+              +91 8961772773
+            </p>
+            <p class="mb-0">
+              <i class="bi bi-envelope me-2"></i>
+              civilianwelfarefoundation@gmail.com
+            </p>
+          </div>
+
+          <div class="d-flex gap-2 mt-4">
+
+  <a
+    href="https://www.facebook.com/p/CWF-Labs-Transdisciplinary-healthcare-and-research-100086049177970/"
+    class="footer-social"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Facebook">
+
+    <i class="bi bi-facebook"></i>
+
+  </a>
+
+  <a
+    href="https://www.instagram.com/civilian_welfare_foundation/"
+    class="footer-social"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram">
+
+    <i class="bi bi-instagram"></i>
+
+  </a>
+
+  <a
+    href="https://wa.me/918961772773"
+    class="footer-social"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="WhatsApp">
+
+    <i class="bi bi-whatsapp"></i>
+
+  </a>
+
+  <a
+    href="https://in.linkedin.com/company/civilian-welfare-foundation"
+    class="footer-social"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn">
+
+    <i class="bi bi-linkedin"></i>
+
+  </a>
+
+</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom py-3">
+    <div class="container">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+        <p class="mb-0 small">
+          © <span id="footerYear"></span> CWF Labs. All rights reserved.
+        </p>
+
+        <p class="mb-0 small footer-bottom-text">
+          Building accessible healthcare for rural communities.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- Bootstrap JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+
+  <!-- Custom JS -->
+  <script src="js/main.js"></script>
+  <script src="js/language.js"></script>
+  <script
+  type="module"
+  src="js/home-feedback.js">
+</script>
+  <script type="module" src="js/homepage.js"></script>
+
+</body>
+</html>
