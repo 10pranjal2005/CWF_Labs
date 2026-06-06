@@ -98,7 +98,12 @@ const counts = {
   contactCardsCount:
     document.getElementById(
       "contactCardsCount"
-    )
+    ),
+
+  careersCount:
+document.getElementById(
+  "careersCount"
+),
 
 };
 
@@ -145,6 +150,29 @@ document.getElementById("summaryBlogsBar");
 
 const summaryFaqsBar =
 document.getElementById("summaryFaqsBar");
+
+const internshipsCount =
+document.getElementById("internshipsCount");
+
+const volunteerCount =
+document.getElementById("volunteerCount");
+
+const researchCount =
+document.getElementById("researchCount");
+
+const consultantCount =
+document.getElementById("consultantCount");
+
+const projectCount =
+document.getElementById("projectCount");
+
+const fulltimeCount =
+document.getElementById("fulltimeCount");
+
+const careerApplicationsCount =
+document.getElementById(
+  "careerApplicationsCount"
+);
 
   function setCount(element, value) {
     if (element) {
@@ -386,9 +414,108 @@ watchTotalCount(
 );
 
 watchTotalCount(
+  "careers",
+  counts.careersCount
+);
+
+watchCareersSummary();
+
+watchTotalCount(
   "contact_cards",
   counts.contactCardsCount
 );
+
+function watchCareersSummary() {
+
+  onSnapshot(
+    collection(db, "careers"),
+
+    (snapshot) => {
+
+      const openings =
+        snapshot.docs.map(
+          doc => doc.data()
+        );
+
+      setCount(
+        counts.careersCount,
+        openings.length
+      );
+
+      setCount(
+        internshipsCount,
+        openings.filter(
+          item =>
+            item.category ===
+            "Internships"
+        ).length
+      );
+
+      setCount(
+        volunteerCount,
+        openings.filter(
+          item =>
+            item.category ===
+            "Volunteer Programs"
+        ).length
+      );
+
+      setCount(
+        researchCount,
+        openings.filter(
+          item =>
+            item.category ===
+            "Research Associates"
+        ).length
+      );
+
+      setCount(
+        consultantCount,
+        openings.filter(
+          item =>
+            item.category ===
+            "Healthcare Consultants"
+        ).length
+      );
+
+      setCount(
+        projectCount,
+        openings.filter(
+          item =>
+            item.category ===
+            "Project-Based Roles"
+        ).length
+      );
+
+      setCount(
+        fulltimeCount,
+        openings.filter(
+          item =>
+            item.category ===
+            "Full-Time Openings"
+        ).length
+      );
+
+    }
+  );
+
+  onSnapshot(
+    collection(
+      db,
+      "career_applications"
+    ),
+
+    (snapshot) => {
+
+      setCount(
+        careerApplicationsCount,
+        snapshot.size
+      );
+
+    }
+  );
+
+}
 
   onAuthStateChanged(auth, async (user) => {
     if (!user) {

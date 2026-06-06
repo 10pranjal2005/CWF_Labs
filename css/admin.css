@@ -639,3 +639,26 @@ a:hover {
   transition: width .6s ease;
 
 }
+
+.application-status-select{
+  font-weight:600;
+  min-width:180px;
+}
+
+.application-status-select.status-new{
+  background:#0d6efd;
+  color:#fff;
+  border-color:#0d6efd;
+}
+
+.application-status-select.status-approved{
+  background:#198754;
+  color:#fff;
+  border-color:#198754;
+}
+
+.application-status-select.status-rejected{
+  background:#dc3545;
+  color:#fff;
+  border-color:#dc3545;
+}

@@ -202,21 +202,6 @@
             </div>
           </div>
 
-          <div class="col-12 col-sm-6 col-xl-3">
-            <div class="card border-0 shadow-sm h-100">
-              <div class="card-body p-4">
-                <div class="d-flex align-items-center justify-content-between">
-                  <div>
-                    <p class="text-muted mb-1">FAQs</p>
-                    <h3 class="fw-bold mb-0 text-secondary" id="faqsCount">0</h3>
-                  </div>
-                  <div class="feature-icon flex-shrink-0">
-                    <i class="bi bi-question-circle"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
           <div class="col-12 col-sm-6 col-xl-3">
 
@@ -257,6 +242,49 @@
   </div>
 
 </div>
+
+<div class="col-12 col-sm-6 col-xl-3">
+
+  <button
+    type="button"
+    class="card border-0 shadow-sm h-100 w-100 text-start"
+    data-bs-toggle="modal"
+    data-bs-target="#careerSummaryModal">
+
+    <span class="card-body p-4 d-block">
+
+      <span class="d-flex align-items-center justify-content-between">
+
+        <span>
+
+          <span class="text-muted d-block mb-1">
+            Career Openings
+          </span>
+
+          <span
+            class="fw-bold mb-0 fs-2 text-success"
+            id="careersCount">
+
+            0
+
+          </span>
+
+        </span>
+
+        <span class="feature-icon flex-shrink-0">
+
+          <i class="bi bi-briefcase"></i>
+
+        </span>
+
+      </span>
+
+    </span>
+
+  </button>
+
+</div>
+
 
 
         </div>
@@ -332,6 +360,22 @@
 
     <span>
       Manage Blogs
+    </span>
+
+  </a>
+
+</div>
+
+<div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+  <a
+    href="manage-careers.html"
+    class="quick-link-card h-100">
+
+    <i class="bi bi-briefcase"></i>
+
+    <span>
+      Manage Careers
     </span>
 
   </a>
@@ -676,7 +720,124 @@ class="list-group-item list-group-item-action d-flex justify-content-between ali
     </div>
   </main>
 
-  <!-- BOOKING SUMMARY MODAL -->
+
+<!-- CAREER SUMMARY MODAL -->
+
+<div
+  class="modal fade"
+  id="careerSummaryModal"
+  tabindex="-1">
+
+  <div
+    class="modal-dialog modal-dialog-centered modal-lg">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <h5 class="modal-title fw-bold">
+          Career Overview
+        </h5>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal">
+        </button>
+
+      </div>
+
+      <div class="modal-body">
+
+        <div class="row g-3">
+
+          <div class="col-md-4">
+            <div class="card border-0 bg-light">
+              <div class="card-body">
+                <small>Internships</small>
+                <h3 id="internshipsCount">0</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card border-0 bg-light">
+              <div class="card-body">
+                <small>Volunteer Programs</small>
+                <h3 id="volunteerCount">0</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card border-0 bg-light">
+              <div class="card-body">
+                <small>Research Associates</small>
+                <h3 id="researchCount">0</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card border-0 bg-light">
+              <div class="card-body">
+                <small>Healthcare Consultants</small>
+                <h3 id="consultantCount">0</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card border-0 bg-light">
+              <div class="card-body">
+                <small>Project Roles</small>
+                <h3 id="projectCount">0</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card border-0 bg-light">
+              <div class="card-body">
+                <small>Full-Time Openings</small>
+                <h3 id="fulltimeCount">0</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+
+            <div class="card border-0 bg-success-subtle">
+
+              <div class="card-body">
+
+                <small>Total Applications</small>
+
+                <h2
+                  class="fw-bold"
+                  id="careerApplicationsCount">
+
+                  0
+
+                </h2>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- BOOKING SUMMARY MODAL -->
   <div class="modal fade" id="bookingSummaryModal" tabindex="-1" aria-labelledby="bookingSummaryModalLabel">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
