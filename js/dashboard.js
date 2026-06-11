@@ -105,6 +105,11 @@ document.getElementById(
   "careersCount"
 ),
 
+researchModuleCount:
+document.getElementById(
+"researchModuleCount"
+),
+
 };
 
   const bookingSummary = {
@@ -172,6 +177,16 @@ document.getElementById("fulltimeCount");
 const careerApplicationsCount =
 document.getElementById(
   "careerApplicationsCount"
+);
+
+const summaryResearchCount =
+document.getElementById(
+"summaryResearchCount"
+);
+
+const summaryResearchBar =
+document.getElementById(
+"summaryResearchBar"
 );
 
   function setCount(element, value) {
@@ -403,6 +418,12 @@ watchSummaryCount(
 );
 
 watchSummaryCount(
+  "research",
+  summaryResearchCount,
+  summaryResearchBar
+);
+
+watchSummaryCount(
   "faqs",
   summaryFaqsCount,
   summaryFaqsBar
@@ -411,6 +432,11 @@ watchSummaryCount(
 watchTotalCount(
   "blogs",
   counts.blogsCount
+);
+
+watchTotalCount(
+  "research",
+  counts.researchModuleCount
 );
 
 watchTotalCount(
