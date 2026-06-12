@@ -44,7 +44,7 @@
   <link rel="stylesheet" href="../css/admin.css">
 </head>
 
-<body class="bg-light">
+<body class="bg-light" style="display:none;">
 
   <!-- ADMIN TOP BAR -->
   <header class="sticky-top">
@@ -997,6 +997,11 @@ class="list-group-item list-group-item-action d-flex justify-content-between ali
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+  <script
+  type="module"
+  src="admin/js/auth-guard.js">
+</script>
+
   <!-- Firebase Dashboard Script -->
   <script type="module" src="../js/dashboard.js"></script>
 
@@ -1102,6 +1107,7 @@ class="list-group-item list-group-item-action d-flex justify-content-between ali
 
   </div>
 </footer>
+
 
 <script>
 document.getElementById("adminFooterYear").textContent =

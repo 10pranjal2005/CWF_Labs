@@ -44,7 +44,8 @@
   <link rel="stylesheet" href="../css/admin.css">
 </head>
 
-<body class="bg-light">
+<body class="bg-light" style="display:none;">
+
 
   <!-- ADMIN TOP BAR -->
   <header class="sticky-top">
@@ -402,6 +403,12 @@
 
   </div>
 </footer>
+
+<script
+  type="module"
+  src="admin/js/auth-guard.js">
+</script>
+
 <script>
 document.getElementById("adminFooterYear").textContent =
 new Date().getFullYear();
